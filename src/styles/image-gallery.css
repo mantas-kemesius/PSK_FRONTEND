@@ -1,0 +1,24 @@
+.image-gallery-fullscreen-button::before,
+.image-gallery-play-button::before,
+.image-gallery-left-nav::before,
+.image-gallery-right-nav::before {
+    font-size: 30px;
+}
+
+.image-gallery {
+    width: 100% !important;
+    height: 100%;
+}
+
+.image-gallery-slide img {
+    z-index: 1;
+    height: 300px;
+    width: 100%;
+}
+
+.image-gallery-fullscreen-button:hover::before,
+.image-gallery-play-button:hover::before,
+.image-gallery-left-nav:hover::before,
+.image-gallery-right-nav:hover::before {
+    color: #fff !important;
+}

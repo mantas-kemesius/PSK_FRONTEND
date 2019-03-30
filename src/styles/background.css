@@ -1,0 +1,35 @@
+.bgw {
+    background-color: #fff;
+}
+
+.bg-light-grey {
+    background-color: #707070;
+}
+
+.bgw-h:hover {
+    background-color: #fff;
+}
+
+.bg-danger {
+    background-color: #ff6064;
+}
+.bg-h-danger:hover {
+    background-color: #ff0011;
+}
+
+.bg-default {
+    background-color: #4a67e2;
+}
+.bg-h-default:hover {
+    background-color: #5f77e4;
+}
+
+.bg-success {
+    background-color: rgb(1, 168, 99);
+}
+.bg-h-success:hover {
+    background-color: rgb(0, 187, 109);
+}
+.bg-grey-h:hover {
+    background-color: #f8f8f8;
+}

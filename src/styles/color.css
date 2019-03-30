@@ -1,0 +1,36 @@
+.cw {
+    color: #fff;
+}
+.cw-h:hover {
+    color: #fff;
+}
+.cb {
+    color: #000;
+}
+.c-purple {
+    color: #4a67e2;
+}
+.c-purple-h:hover {
+    color: #4a67e2;
+}
+.c-blue {
+    color: #1c7aba;
+}
+.c-light-grey {
+    color: #707070;
+}
+.c-darker-grey-h:hover {
+    color: #767676;
+}
+
+.c-light-grey-h:hover {
+    color: #a1a1a1;
+}
+
+.c-dark-grey {
+    color: #484848;
+}
+
+.c-dark-grey-h:hover {
+    color: #484848;
+}

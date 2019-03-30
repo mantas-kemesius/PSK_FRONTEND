@@ -1,0 +1,25 @@
+.df {
+    display: flex;
+}
+.jc-sb {
+    justify-content: space-between;
+}
+
+.jc-center {
+    justify-content: center;
+}
+
+.fd-c {
+    flex-direction: column;
+}
+
+.as-c {
+    align-self: center;
+}
+.jc-s-evenly {
+    justify-content: space-evenly;
+}
+
+.jcfs {
+    justify-content: flex-start;
+}
