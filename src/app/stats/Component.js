@@ -2,11 +2,11 @@ import React from "react";
 import Header from "./../../components/header/Component";
 import Body from "./body/Component";
 
-const Home = () => (
+const Stats = () => (
   <>
     <Header />
     <Body />
   </>
 );
 
-export default Home;
+export default Stats;

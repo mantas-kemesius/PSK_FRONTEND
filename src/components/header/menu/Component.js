@@ -4,8 +4,8 @@ import Item from "./item/Component";
 const Menu = () => {
   return (
     <div className="pt20 pr30 df">
-      <Item title="Nanna" link="nanna" />
-      <Item title="Settings" link="settings" />
+      <Item title="Kelionės" link="trip" />
+      <Item title="Statistika" link="stats" />
     </div>
   );
 };
