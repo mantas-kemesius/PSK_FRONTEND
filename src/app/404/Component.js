@@ -1,10 +1,14 @@
 import React from "react";
+import Header from "./../../components/header/Component";
 
 const NotFoundPage = () => {
   return (
-    <div className="df jc-center">
-      <h1 className="as-c mt25p">404 Page not found :(</h1>
-    </div>
+    <>
+      <Header />
+      <div className="df jc-center">
+        <h1 className="as-c mt20p">404 Page not found :(</h1>
+      </div>
+    </>
   );
 };
 
