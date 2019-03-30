@@ -1,430 +1,445 @@
 .ph5 {
-    padding-top: 5px;
-    padding-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .ph10 {
-    padding-top: 10px;
-    padding-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .ph15 {
-    padding-top: 15px;
-    padding-bottom: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 .p0 {
-    padding: 0;
+  padding: 0;
 }
 .p9 {
-    padding: 9px;
+  padding: 9px;
 }
 .p10 {
-    padding: 10px;
+  padding: 10px;
 }
 .p15 {
-    padding: 15px;
+  padding: 15px;
 }
 .p30 {
-    padding: 30px;
+  padding: 30px;
 }
 .pr1p {
-    padding-right: 1%;
+  padding-right: 1%;
 }
 .pr2p {
-    padding-right: 2%;
+  padding-right: 2%;
 }
 .pr3p {
-    padding-right: 3%;
+  padding-right: 3%;
 }
 .pr4p {
-    padding-right: 4%;
+  padding-right: 4%;
 }
 .pr5p {
-    padding-right: 5%;
+  padding-right: 5%;
 }
 .pr0 {
-    padding-right: 0;
+  padding-right: 0;
 }
 .pr1 {
-    padding-right: 1px;
+  padding-right: 1px;
 }
 .pr2 {
-    padding-right: 2px;
+  padding-right: 2px;
 }
 .pr3 {
-    padding-right: 3px;
+  padding-right: 3px;
 }
 .pr4 {
-    padding-right: 4px;
+  padding-right: 4px;
 }
 .pr5 {
-    padding-right: 5px;
+  padding-right: 5px;
 }
 .pr6 {
-    padding-right: 6px;
+  padding-right: 6px;
 }
 .pr7 {
-    padding-right: 7px;
+  padding-right: 7px;
 }
 .pr8 {
-    padding-right: 8px;
+  padding-right: 8px;
 }
 .pr9 {
-    padding-right: 9px;
+  padding-right: 9px;
 }
 .pr10 {
-    padding-right: 10px;
+  padding-right: 10px;
 }
 .pr11 {
-    padding-right: 11px;
+  padding-right: 11px;
 }
 .pr12 {
-    padding-right: 12px;
+  padding-right: 12px;
 }
 .pr13 {
-    padding-right: 13px;
+  padding-right: 13px;
 }
 .pr14 {
-    padding-right: 14px;
+  padding-right: 14px;
 }
 .pr15 {
-    padding-right: 15px;
+  padding-right: 15px;
 }
 .pr20 {
-    padding-right: 20px;
+  padding-right: 20px;
+}
+.pr25 {
+  padding-right: 25px;
+}
+.pr26 {
+  padding-right: 26px;
+}
+.pr30 {
+  padding-right: 30px;
+}
+.pr40 {
+  padding-right: 40px;
+}
+.pr50 {
+  padding-right: 50px;
 }
 .pl0 {
-    padding-left: 0;
+  padding-left: 0;
 }
 .pl1 {
-    padding-left: 1px;
+  padding-left: 1px;
 }
 .pl2 {
-    padding-left: 2px;
+  padding-left: 2px;
 }
 .pl3 {
-    padding-left: 3px;
+  padding-left: 3px;
 }
 .pl4 {
-    padding-left: 4px;
+  padding-left: 4px;
 }
 .pl5 {
-    padding-left: 5px;
+  padding-left: 5px;
 }
 .pl6 {
-    padding-left: 6px;
+  padding-left: 6px;
 }
 .pl7 {
-    padding-left: 7px;
+  padding-left: 7px;
 }
 .pl8 {
-    padding-left: 8px;
+  padding-left: 8px;
 }
 .pl9 {
-    padding-left: 9px;
+  padding-left: 9px;
 }
 .pl10 {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 .pl11 {
-    padding-left: 11px;
+  padding-left: 11px;
 }
 .pl12 {
-    padding-left: 12px;
+  padding-left: 12px;
 }
 .pl13 {
-    padding-left: 13px;
+  padding-left: 13px;
 }
 .pl14 {
-    padding-left: 14px;
+  padding-left: 14px;
 }
 .pl15 {
-    padding-left: 15px;
+  padding-left: 15px;
 }
 .pl1p {
-    padding-left: 1%;
+  padding-left: 1%;
 }
 .pl2p {
-    padding-left: 2%;
+  padding-left: 2%;
 }
 .pl3p {
-    padding-left: 3%;
+  padding-left: 3%;
 }
 .pl4p {
-    padding-left: 4%;
+  padding-left: 4%;
 }
 .pl5p {
-    padding-left: 5%;
+  padding-left: 5%;
 }
 .pl6p {
-    padding-left: 6%;
+  padding-left: 6%;
 }
 .pl10p {
-    padding-left: 10%;
+  padding-left: 10%;
 }
 
 .pt1 {
-    padding-top: 1px;
+  padding-top: 1px;
 }
 .pt2 {
-    padding-top: 2px;
+  padding-top: 2px;
 }
 .pt3 {
-    padding-top: 3px;
+  padding-top: 3px;
 }
 .pt4 {
-    padding-top: 4px;
+  padding-top: 4px;
 }
 .pt5 {
-    padding-top: 5px;
+  padding-top: 5px;
 }
 .pt6 {
-    padding-top: 6px;
+  padding-top: 6px;
 }
 .pt7 {
-    padding-top: 7px;
+  padding-top: 7px;
 }
 .pt8 {
-    padding-top: 8px;
+  padding-top: 8px;
 }
 .pt9 {
-    padding-top: 9px;
+  padding-top: 9px;
 }
 .pt10 {
-    padding-top: 10px;
+  padding-top: 10px;
 }
 .pt11 {
-    padding-top: 11px;
+  padding-top: 11px;
 }
 .pt12 {
-    padding-top: 12px;
+  padding-top: 12px;
 }
 .pt13 {
-    padding-top: 13px;
+  padding-top: 13px;
 }
 .pt14 {
-    padding-top: 14px;
+  padding-top: 14px;
 }
 .pt15 {
-    padding-top: 15px;
+  padding-top: 15px;
 }
 .pt16 {
-    padding-top: 16px;
+  padding-top: 16px;
 }
 .pt17 {
-    padding-top: 17px;
+  padding-top: 17px;
 }
 .pt18 {
-    padding-top: 18px;
+  padding-top: 18px;
 }
 .pt19 {
-    padding-top: 19px;
+  padding-top: 19px;
 }
 .pt20 {
-    padding-top: 20px;
+  padding-top: 20px;
 }
 .pt21 {
-    padding-top: 21spx;
+  padding-top: 21spx;
 }
 .pt22 {
-    padding-top: 22px;
+  padding-top: 22px;
 }
 .pt23 {
-    padding-top: 23px;
+  padding-top: 23px;
 }
 .pt24 {
-    padding-top: 24px;
+  padding-top: 24px;
 }
 .pt25 {
-    padding-top: 25px;
+  padding-top: 25px;
 }
 .pt26 {
-    padding-top: 26px;
+  padding-top: 26px;
 }
 .pt27 {
-    padding-top: 27px;
+  padding-top: 27px;
 }
 .pt28 {
-    padding-top: 28px;
+  padding-top: 28px;
 }
 .pt29 {
-    padding-top: 29px;
+  padding-top: 29px;
 }
 .pt30 {
-    padding-top: 30px;
+  padding-top: 30px;
 }
 .pt40 {
-    padding-top: 40px;
+  padding-top: 40px;
 }
 .pt50 {
-    padding-top: 50px;
+  padding-top: 50px;
 }
 .pt60 {
-    padding-top: 60px;
+  padding-top: 60px;
 }
 .pt70 {
-    padding-top: 70px;
+  padding-top: 70px;
 }
 .pt80 {
-    padding-top: 80px;
+  padding-top: 80px;
 }
 .pt90 {
-    padding-top: 90px;
+  padding-top: 90px;
 }
 .pt100 {
-    padding-top: 100px;
+  padding-top: 100px;
 }
 
 .pt1p {
-    padding-top: 1%;
+  padding-top: 1%;
 }
 .pt2p {
-    padding-top: 2%;
+  padding-top: 2%;
 }
 .pt3p {
-    padding-top: 3%;
+  padding-top: 3%;
 }
 .pt4p {
-    padding-top: 4%;
+  padding-top: 4%;
 }
 .pt5p {
-    padding-top: 5%;
+  padding-top: 5%;
 }
 .pt6p {
-    padding-top: 6%;
+  padding-top: 6%;
 }
 .pt7p {
-    padding-top: 7%;
+  padding-top: 7%;
 }
 .pt8p {
-    padding-top: 8%;
+  padding-top: 8%;
 }
 .pt9p {
-    padding-top: 9%;
+  padding-top: 9%;
 }
 .pt10p {
-    padding-top: 10%;
+  padding-top: 10%;
 }
 .pb1 {
-    padding-bottom: 1px;
+  padding-bottom: 1px;
 }
 .pb2 {
-    padding-bottom: 2px;
+  padding-bottom: 2px;
 }
 .pb3 {
-    padding-bottom: 3px;
+  padding-bottom: 3px;
 }
 .pb4 {
-    padding-bottom: 4px;
+  padding-bottom: 4px;
 }
 .pb5 {
-    padding-bottom: 5px;
+  padding-bottom: 5px;
 }
 .pb6 {
-    padding-bottom: 6px;
+  padding-bottom: 6px;
 }
 .pb7 {
-    padding-bottom: 7px;
+  padding-bottom: 7px;
 }
 .pb8 {
-    padding-bottom: 8px;
+  padding-bottom: 8px;
 }
 .pb9 {
-    padding-bottom: 9px;
+  padding-bottom: 9px;
 }
 .pb10 {
-    padding-bottom: 10px;
+  padding-bottom: 10px;
 }
 .pb11 {
-    padding-bottom: 11px;
+  padding-bottom: 11px;
 }
 .pb12 {
-    padding-bottom: 12px;
+  padding-bottom: 12px;
 }
 .pb13 {
-    padding-bottom: 13px;
+  padding-bottom: 13px;
 }
 .pb14 {
-    padding-bottom: 14px;
+  padding-bottom: 14px;
 }
 .pb15 {
-    padding-bottom: 15px;
+  padding-bottom: 15px;
 }
 .pb16 {
-    padding-bottom: 16px;
+  padding-bottom: 16px;
 }
 .pb17 {
-    padding-bottom: 17px;
+  padding-bottom: 17px;
 }
 .pb18 {
-    padding-bottom: 18px;
+  padding-bottom: 18px;
 }
 .pb19 {
-    padding-bottom: 19px;
+  padding-bottom: 19px;
 }
 .pb20 {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 .pb21 {
-    padding-bottom: 21spx;
+  padding-bottom: 21spx;
 }
 .pb22 {
-    padding-bottom: 22px;
+  padding-bottom: 22px;
 }
 .pb23 {
-    padding-bottom: 23px;
+  padding-bottom: 23px;
 }
 .pb24 {
-    padding-bottom: 24px;
+  padding-bottom: 24px;
 }
 .pb25 {
-    padding-bottom: 25px;
+  padding-bottom: 25px;
 }
 .pb26 {
-    padding-bottom: 26px;
+  padding-bottom: 26px;
 }
 .pb27 {
-    padding-bottom: 27px;
+  padding-bottom: 27px;
 }
 .pb28 {
-    padding-bottom: 28px;
+  padding-bottom: 28px;
 }
 .pb29 {
-    padding-bottom: 29px;
+  padding-bottom: 29px;
 }
 .pb30 {
-    padding-bottom: 30px;
+  padding-bottom: 30px;
 }
 .pb1p {
-    padding-bottom: 1%;
+  padding-bottom: 1%;
 }
 .pb2p {
-    padding-bottom: 2%;
+  padding-bottom: 2%;
 }
 .pb3p {
-    padding-bottom: 3%;
+  padding-bottom: 3%;
 }
 .pb4p {
-    padding-bottom: 4%;
+  padding-bottom: 4%;
 }
 .pb5p {
-    padding-bottom: 5%;
+  padding-bottom: 5%;
 }
 .pb6p {
-    padding-bottom: 6%;
+  padding-bottom: 6%;
 }
 .pb7p {
-    padding-bottom: 7%;
+  padding-bottom: 7%;
 }
 .pb8p {
-    padding-bottom: 8%;
+  padding-bottom: 8%;
 }
 .pb9p {
-    padding-bottom: 9%;
+  padding-bottom: 9%;
 }
 .pb10p {
-    padding-bottom: 10%;
+  padding-bottom: 10%;
 }
 
 .ph5p {
-    padding-bottom: 5%;
-    padding-top: 5%;
+  padding-bottom: 5%;
+  padding-top: 5%;
 }
