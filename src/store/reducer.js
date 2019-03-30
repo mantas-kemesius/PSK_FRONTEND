@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { connectRouter } from "connected-react-router";
 
 const red = (state = {}, action) => {
   switch (action.type) {
@@ -11,6 +12,8 @@ const red = (state = {}, action) => {
   }
 };
 
-export default combineReducers({
-  something: red
-});
+export default history =>
+  combineReducers({
+    router: connectRouter(history),
+    something: red
+  });
