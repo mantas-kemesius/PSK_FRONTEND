@@ -7,21 +7,11 @@ class LoginForm extends React.Component {
     password: "admin"
   };
 
-  componentDidUpdate() {
-    if (this.props.isAuth) {
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ username: this.state.username })
-      );
-      this.props.history.push("/");
-    }
-  }
-
   handleClick = () => {
     const formData = new FormData();
     formData.append("username", this.state.username);
     formData.append("password", this.state.password);
-    this.props.auth(formData);
+    this.props.auth(formData, this.state.username);
   };
 
   onUsernameChange = e => {

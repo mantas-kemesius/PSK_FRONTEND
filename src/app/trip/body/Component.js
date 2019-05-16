@@ -1,12 +1,10 @@
 import React from "react";
-import FutureTripsTable from "./../../../components/futureTrips/Container";
-import PastTripsTable from "./../../../components/pastTrips/Container";
+import Trips from "./../../../components/trips/Component";
 
 const Body = () => {
   return (
     <>
-      <FutureTripsTable />
-      <PastTripsTable />
+      <Trips />
     </>
   );
 };

@@ -1,0 +1,1 @@
+export const SET_AVAILABILITIES = "trips/SET_AVAILABILITIES";

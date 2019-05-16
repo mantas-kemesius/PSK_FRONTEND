@@ -1,7 +1,14 @@
 import React from "react";
+import Trips from "./../../../components/trips/Component";
+import Offices from "./../../../components/offices/Container";
 
 const Body = () => {
-  return <h1>Home</h1>;
+  return (
+    <div>
+      <Trips />
+      <Offices />
+    </div>
+  );
 };
 
 export default Body;

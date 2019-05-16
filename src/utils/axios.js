@@ -3,7 +3,11 @@ import { getJWToken } from "./../features/user/selectors";
 
 const URL = "http://localhost:8080";
 export const PATHS = {
-  AUTH: "/api/login"
+  AUTH: "/api/login",
+  TRIP: "/api/trip",
+  AVAILABILITY: "/api/availability",
+  OFFICE_APARTAMENTS: "/api/officeApartment",
+  OFFICE: "/api/office"
 };
 
 const basicHeaders = path => {
@@ -18,10 +22,10 @@ const authHeaders = path => {
   return {
     headers: {
       Authorization: `${getJWToken()}`,
-      "Content-type": "application/json"
+      "Content-Type": "application/json;charset=UTF-8"
     },
-    url: `${URL}${path}`,
-    withCredentials: true
+    url: `${URL}${path}`
+    // withCredentials: true
   };
 };
 
@@ -40,10 +44,10 @@ export const basicGet = url => {
   });
 };
 
-export const authPost = (data, url, token) => {
+export const authPost = (url, data = {}) => {
   return axios({
     method: "POST",
-    ...authHeaders(url, token),
+    ...authHeaders(url),
     data: { ...data }
   });
 };
