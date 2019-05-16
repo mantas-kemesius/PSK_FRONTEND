@@ -1,10 +1,10 @@
 import React from "react";
-import Trips from "./../../../components/trips/Component";
+import OfficeForm from "./../../../components/officeForm/Container";
 
 const Body = () => {
   return (
     <>
-      <Trips />
+      <OfficeForm />
     </>
   );
 };

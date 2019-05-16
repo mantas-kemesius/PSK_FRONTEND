@@ -1,1 +1,1 @@
-export const SET_OFFICES = "trips/SET_OFFICES";
+export const SET_OFFICES = "offices/SET_OFFICES";

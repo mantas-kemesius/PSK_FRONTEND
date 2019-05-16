@@ -7,14 +7,15 @@ export const PATHS = {
   TRIP: "/api/trip",
   AVAILABILITY: "/api/availability",
   OFFICE_APARTAMENTS: "/api/officeApartment",
-  OFFICE: "/api/office"
+  OFFICE: "/api/office",
+  OFFICE_ADD: "/api/office/add"
 };
 
 const basicHeaders = path => {
   return {
     headers: { "content-type": "application/json" },
-    url: `${URL}${path}`,
-    withCredentials: true
+    url: `${URL}${path}`
+    // withCredentials: true
   };
 };
 
@@ -22,7 +23,7 @@ const authHeaders = path => {
   return {
     headers: {
       Authorization: `${getJWToken()}`,
-      "Content-Type": "application/json;charset=UTF-8"
+      "Content-Type": "application/json"
     },
     url: `${URL}${path}`
     // withCredentials: true
@@ -48,7 +49,15 @@ export const authPost = (url, data = {}) => {
   return axios({
     method: "POST",
     ...authHeaders(url),
-    data: { ...data }
+    data: data
+  });
+};
+
+export const authPut = (url, data = {}) => {
+  return axios({
+    method: "PUT",
+    ...authHeaders(url),
+    data: data
   });
 };
 

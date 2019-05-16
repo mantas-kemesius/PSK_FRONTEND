@@ -1,6 +1,6 @@
 import React from "react";
 import Trips from "./../../../components/trips/Component";
-import Offices from "./../../../components/offices/Container";
+import Offices from "./../../../components/offices/Component";
 
 const Body = () => {
   return (

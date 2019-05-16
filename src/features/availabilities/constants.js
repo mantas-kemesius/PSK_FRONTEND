@@ -1,1 +1,1 @@
-export const SET_AVAILABILITIES = "trips/SET_AVAILABILITIES";
+export const SET_AVAILABILITIES = "availabilities/SET_AVAILABILITIES";

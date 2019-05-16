@@ -1,1 +1,2 @@
-export const SET_OFFICE_APARTAMENTS = "trips/SET_OFFICE_APARTAMENTS";
+export const SET_OFFICE_APARTAMENTS =
+  "officeApartaments/SET_OFFICE_APARTAMENTS";
