@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
 import OfficeForm from "./Component";
-import { addNewTrip } from "./../../features/trips/actions";
+import { addNewOffice } from "./../../features/offices/actions";
 
-const mapStateToProps = state => {};
+const mapStateToProps = state => ({});
 
 export default connect(
   mapStateToProps,
   {
-    add: addNewTrip
+    add: addNewOffice
   }
 )(OfficeForm);
