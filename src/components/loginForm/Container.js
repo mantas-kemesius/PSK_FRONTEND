@@ -1,19 +1,16 @@
 import { connect } from "react-redux";
-import PastTrips from "./Component";
-
-const tableHead = ["Vardas", "Pavardė", "Išvyko"];
-
-const tableBody = [
-  ["Jonas", "Jonaitis", "2019-07-20"],
-  ["Petras", "Petraitis", "2019-07-13"],
-  ["Ona", "Onutė", "2019-07-16"]
-];
+import LoginForm from "./Component";
+import { authenticate } from "./../../features/user/actions";
 
 const mapStateToProps = state => {
-  return { tableHead, tableBody };
+  return {
+    isAuth: state.user.isAuth
+  };
 };
 
 export default connect(
   mapStateToProps,
-  null
-)(PastTrips);
+  {
+    auth: authenticate
+  }
+)(LoginForm);

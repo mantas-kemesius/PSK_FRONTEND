@@ -1,1 +1,1 @@
-export const initialiseApp = () => {};
+export const initialiseApp = () => () => {};

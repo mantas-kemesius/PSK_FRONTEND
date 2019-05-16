@@ -1,8 +1,5 @@
 import React from "react";
-import axios from "axios";
 import { withRouter } from "react-router-dom";
-
-const URL = "http://localhost:8080/api/login";
 
 class LoginForm extends React.Component {
   state = {
@@ -10,26 +7,21 @@ class LoginForm extends React.Component {
     password: "admin"
   };
 
-  handleClick = () => {
-    const formData = new FormData();
-    formData.append("username", this.state.username);
-    formData.append("password", this.state.password);
-    axios({
-      method: "post",
-      url: URL,
-      data: formData,
-      headers: {
-        "Content-Type": "application/json"
-      },
-      withCredentials: true
-    }).then(res => {
-      localStorage.setItem("jwt", res.data);
+  componentDidUpdate() {
+    if (this.props.isAuth) {
       localStorage.setItem(
         "user",
         JSON.stringify({ username: this.state.username })
       );
       this.props.history.push("/");
-    });
+    }
+  }
+
+  handleClick = () => {
+    const formData = new FormData();
+    formData.append("username", this.state.username);
+    formData.append("password", this.state.password);
+    this.props.auth(formData);
   };
 
   onUsernameChange = e => {
