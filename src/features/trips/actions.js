@@ -1,5 +1,6 @@
 import { authPost, authPut, PATHS } from "./../../utils/axios";
 import { SET_TRIPS, TOGGLE_MODAL } from "./constants";
+import { push } from "connected-react-router";
 
 export const fetchTrips = () => dispatch => {
   authPost(PATHS.TRIP).then(res => {
@@ -22,6 +23,7 @@ export const connectTrips = (connect, data) => (dispatch, getState) => {
   };
   authPut(PATHS.TRIP + `/${connect}`, postData);
   dispatch(toggleModal(false));
+  dispatch(push("/"));
 };
 
 export const addTrip = data => (dispatch, getState) => {
@@ -46,6 +48,7 @@ export const askOrTripShouldBeConnected = data => (dispatch, getState) => {
       dispatch(toggleModal(true));
     } else {
       authPut(PATHS.TRIP + `/false`, data);
+      dispatch(push("/"));
     }
   });
 };

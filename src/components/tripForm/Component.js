@@ -20,7 +20,6 @@ class TripForm extends React.Component {
   state = {
     status: "",
     destination: "",
-    shouldConnect: false,
     departureDate: new Date(),
     returnDate: new Date(),
     coordinatorId: "",
@@ -57,10 +56,6 @@ class TripForm extends React.Component {
     this.setState({ status: e.target.value });
   };
 
-  onShouldConnectChange = e => {
-    this.setState({ shouldConnect: e.target.checked });
-  };
-
   render() {
     return (
       <>
@@ -68,16 +63,6 @@ class TripForm extends React.Component {
           <div className="w50p">
             <div className="mt10p mb5p">
               <h2>Pridėti naują kelionę:</h2>
-            </div>
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={this.state.shouldConnect}
-                  onChange={this.onShouldConnectChange}
-                />{" "}
-                Apjungti kelione
-              </label>
             </div>
             <input
               placeholder="Šalis"
