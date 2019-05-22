@@ -1,6 +1,6 @@
 import React from "react";
 
-class TripForm extends React.Component {
+class OfficeForm extends React.Component {
   state = {
     country: "",
     city: "",
@@ -66,4 +66,4 @@ class TripForm extends React.Component {
   }
 }
 
-export default TripForm;
+export default OfficeForm;

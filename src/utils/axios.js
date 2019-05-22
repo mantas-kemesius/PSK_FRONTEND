@@ -8,7 +8,8 @@ export const PATHS = {
   AVAILABILITY: "/api/availability",
   OFFICE_APARTAMENTS: "/api/officeApartment",
   OFFICE: "/api/office",
-  OFFICE_ADD: "/api/office/add"
+  OFFICE_ADD: "/api/office/add",
+  USER_GET: "/api/user"
 };
 
 const basicHeaders = path => {

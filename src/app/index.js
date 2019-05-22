@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "./home/Component";
-import Trip from "./trip/Component";
+import Office from "./office/Component";
 import Stats from "./stats/Component";
 import Login from "./login/Component";
 import NotFoundPage from "./404/Component";
@@ -11,7 +11,8 @@ class App extends React.Component {
     return (
       <Switch>
         <Route exact path="/" render={() => <Home />} />
-        <Route exact path="/forms" render={() => <Trip />} />
+        <Route exact path="/office" render={() => <Office />} />
+        <Route exact path="/trip" render={() => <Office />} />
         <Route exact path="/stats" render={() => <Stats />} />
         <Route exact path="/login" render={() => <Login />} />
         <Route render={() => <NotFoundPage />} />

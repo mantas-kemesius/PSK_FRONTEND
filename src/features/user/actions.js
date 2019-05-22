@@ -1,5 +1,5 @@
-import { basicPost, PATHS } from "./../../utils/axios";
-import { SET_AUTH, SIGNOUT } from "./constants";
+import { authGet, basicPost, PATHS } from "./../../utils/axios";
+import { SET_AUTH, SET_DETAILS, SIGNOUT } from "./constants";
 import { push } from "connected-react-router";
 import { fetchTrips } from "./../../features/trips/actions";
 import { fetchAvailabilities } from "./../../features/availabilities/actions";
@@ -16,6 +16,13 @@ export const authenticate = (data, username) => dispatch => {
   });
 };
 
+export const fetchUserDetails = () => (dispatch, getState) => {
+  authGet(PATHS.USER_GET + `/${getState().user.username}`).then(res => {
+    dispatch(setUserDetails(res.data));
+    localStorage.setItem("uuid", res.data.uuid);
+  });
+};
+
 export const signoutAndRemoveUser = () => dispatch => {
   localStorage.removeItem("jwt");
   localStorage.removeItem("user");
@@ -29,6 +36,11 @@ const triggerFetch = () => dispatch => {
   dispatch(fetchOfficeApartaments());
   dispatch(fetchOffices());
 };
+
+export const setUserDetails = payload => ({
+  type: SET_DETAILS,
+  payload
+});
 
 export const setAuth = username => ({
   type: SET_AUTH,

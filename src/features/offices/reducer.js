@@ -1,6 +1,9 @@
 import { SET_OFFICES } from "./constants";
 
-const defaultState = {};
+const defaultState = {
+  ids: [],
+  byId: {}
+};
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
