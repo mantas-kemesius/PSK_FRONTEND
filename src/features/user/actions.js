@@ -1,4 +1,4 @@
-import { authGet, basicPost, PATHS } from "./../../utils/axios";
+import { authGet, basicPost, authPost, PATHS } from "./../../utils/axios";
 import { SET_AUTH, SET_DETAILS, SIGNOUT } from "./constants";
 import { push } from "connected-react-router";
 import { fetchTrips } from "./../../features/trips/actions";

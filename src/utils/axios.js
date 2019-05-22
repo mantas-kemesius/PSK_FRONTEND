@@ -5,6 +5,7 @@ const URL = "http://localhost:8080";
 export const PATHS = {
   AUTH: "/api/login",
   TRIP: "/api/trip",
+  TRIP_SHOULD_CONNECT: "/api/trip/shouldConnect",
   AVAILABILITY: "/api/availability",
   OFFICE_APARTAMENTS: "/api/officeApartment",
   OFFICE: "/api/office",

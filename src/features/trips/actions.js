@@ -1,41 +1,53 @@
 import { authPost, authPut, PATHS } from "./../../utils/axios";
-import { SET_TRIPS } from "./constants";
+import { SET_TRIPS, TOGGLE_MODAL } from "./constants";
 
 export const fetchTrips = () => dispatch => {
   authPost(PATHS.TRIP).then(res => {
-    console.log(res.data);
     dispatch(normaliseAndSave(res.data));
-    dispatch(addTrip(res.data));
   });
 };
 
-export const addTrip = data => (dispatch, getState) => {
-  // const officeId = data[0].uuid;
-  // const userId = getState().user.uuid;
-  // const formData = new FormData();
-  const dataPut = {
+export const connectTrips = (connect, data) => (dispatch, getState) => {
+  const postData = {
     office: {
-      uuid: "18495c01-5cd8-4962-aa0a-17a7581da27c"
+      uuid: data.officeId
     },
     coordinator: {
-      uuid: "cb72f08d-2e92-4975-b06f-8d8a26f6706b"
+      uuid: data.coordinatorId
     },
-    status: "cool",
-    departureDate: "2011-12-03T10:15:30",
-    returnDate: "2011-12-03T10:15:30",
-    destination: "Vilnius"
+    status: data.status,
+    departureDate: data.departureDate.toISOString(),
+    returnDate: data.returnDate.toISOString(),
+    destination: data.destination
   };
-  // formData.append("office", officeId);
-  // formData.append("departureDate", "2011-12-03T10:15:30");
-  // formData.append("returnDate", "2011-12-03T10:15:30");
-  // formData.append("coordinator", userId);
-  // formData.append("status", "cool");
-  // if (!!getState().offices.ids) {
-  //   const officeId = getState().offices.ids[0];
-  //   const formData = new FormData();
-  //   formData.append("office", officeId);
-  // authPut(PATHS.TRIP + "/false", dataPut).then(res => console.log(res));
-  // }
+  authPut(PATHS.TRIP + `/${connect}`, postData);
+  dispatch(toggleModal(false));
+};
+
+export const addTrip = data => (dispatch, getState) => {
+  const postData = {
+    office: {
+      uuid: data.officeId
+    },
+    coordinator: {
+      uuid: data.coordinatorId
+    },
+    status: data.status,
+    departureDate: data.departureDate.toISOString(),
+    returnDate: data.returnDate.toISOString(),
+    destination: data.destination
+  };
+  dispatch(askOrTripShouldBeConnected(postData));
+};
+
+export const askOrTripShouldBeConnected = data => (dispatch, getState) => {
+  authPut(PATHS.TRIP_SHOULD_CONNECT, data).then(res => {
+    if (res.data) {
+      dispatch(toggleModal(true));
+    } else {
+      authPut(PATHS.TRIP + `/false`, data);
+    }
+  });
 };
 
 const normaliseAndSave = data => dispatch => {
@@ -53,6 +65,11 @@ const normaliseAndSave = data => dispatch => {
 
   dispatch(save({ ids, byId }));
 };
+
+export const toggleModal = val => ({
+  type: TOGGLE_MODAL,
+  payload: val
+});
 
 export const save = payload => ({
   type: SET_TRIPS,

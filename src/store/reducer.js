@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import { connectRouter } from "connected-react-router";
 import breakpoints from "./../features/breakpoints/reducer";
 import user from "./../features/user/reducer";
+import users from "./../features/users/reducer";
 import trips from "./../features/trips/reducer";
 import offices from "./../features/offices/reducer";
 import officeApartaments from "./../features/officeApartaments/reducer";
@@ -15,5 +16,6 @@ export default history =>
     trips,
     offices,
     officeApartaments,
-    availabilities
+    availabilities,
+    users
   });
