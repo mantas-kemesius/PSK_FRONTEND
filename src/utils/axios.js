@@ -5,12 +5,15 @@ const URL = "http://localhost:8080";
 export const PATHS = {
   AUTH: "/api/login",
   TRIP: "/api/trip",
+  TRIP_DETAILS: "/api/tripDetails",
+  TRIP_DETAILS_CREATE: "/api/tripDetails/create",
   TRIP_SHOULD_CONNECT: "/api/trip/shouldConnect",
   AVAILABILITY: "/api/availability",
   OFFICE_APARTAMENTS: "/api/officeApartment",
   OFFICE: "/api/office",
   OFFICE_ADD: "/api/office/add",
-  USER_GET: "/api/user"
+  USER_GET: "/api/user",
+  APARTAMENT_AVAILABILITY: "/api/aptAvailability"
 };
 
 const basicHeaders = path => {

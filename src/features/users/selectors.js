@@ -12,3 +12,11 @@ export const getOrganizatorsForSelectInput = ({ users }) => {
     };
   });
 };
+
+export const selectEmployeeIds = ({ users }) => {
+  const { ids, byId } = users;
+  return ids.filter(item => {
+    const employee = byId[item];
+    return employee.userRoleEnumList.indexOf("EMPLOYEE") !== -1;
+  });
+};

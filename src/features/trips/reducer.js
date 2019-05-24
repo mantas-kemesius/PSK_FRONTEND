@@ -1,9 +1,16 @@
-import { SET_TRIPS, TOGGLE_MODAL } from "./constants";
+import {
+  SET_TRIPS,
+  TOGGLE_MODAL,
+  TOGGLE_TRIP_DETAILS_FORM,
+  SHOULD_BE_CONNECTED,
+  TOGGLE_APARTAMENT_CHECKBOX
+} from "./constants";
 
 const defaultState = {
   isModalOpen: false,
   ids: [],
-  byId: {}
+  byId: {},
+  isApartamentCheckboxChecked: false
 };
 
 const reducer = (state = defaultState, action) => {
@@ -14,7 +21,23 @@ const reducer = (state = defaultState, action) => {
       };
     case TOGGLE_MODAL:
       return {
+        ...state,
         isModalOpen: action.payload
+      };
+    case SHOULD_BE_CONNECTED:
+      return {
+        ...state,
+        additionalTripId: action.payload
+      };
+    case TOGGLE_TRIP_DETAILS_FORM:
+      return {
+        ...state,
+        isFormVisible: action.payload
+      };
+    case TOGGLE_APARTAMENT_CHECKBOX:
+      return {
+        ...state,
+        isApartamentCheckboxChecked: action.payload
       };
     default:
       return state;

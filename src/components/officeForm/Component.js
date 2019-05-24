@@ -4,7 +4,8 @@ class OfficeForm extends React.Component {
   state = {
     country: "",
     city: "",
-    streetAddress: ""
+    streetAddress: "",
+    apartamentStreetAddress: ""
   };
 
   handleClick = () => {
@@ -25,6 +26,10 @@ class OfficeForm extends React.Component {
 
   onAddressChange = e => {
     this.setState({ streetAddress: e.target.value });
+  };
+
+  onApartamentAddressChange = e => {
+    this.setState({ apartamentStreetAddress: e.target.value });
   };
   render() {
     return (
@@ -53,6 +58,13 @@ class OfficeForm extends React.Component {
             className="w95p h30 p10 fz18 b-s1-grey"
             value={this.state.streetAddress}
             onChange={this.onAddressChange}
+          />
+          <input
+            placeholder="Apartamentų adresas"
+            type="text"
+            className="w95p h30 p10 fz18 b-s1-grey"
+            value={this.state.apartamentStreetAddress}
+            onChange={this.onApartamentAddressChange}
           />
           <button
             className="w100p h50 p10 fz18 bg-default cw fwb"

@@ -2,13 +2,12 @@ import { connect } from "react-redux";
 import TripsTable from "./Component";
 
 const tableHead = [
-  "Miestas",
-  "Įstaiga",
+  "Išvyks iš",
+  "Kelionės tikslas",
   "Statusas",
   "Koordinatorius",
   "Išvyk. Data",
-  "Grįžimo Data",
-  "Veiksmai"
+  "Grįžimo Data"
 ];
 
 const mapStateToProps = state => {
