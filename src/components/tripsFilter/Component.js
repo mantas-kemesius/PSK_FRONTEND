@@ -31,9 +31,9 @@ const TripFilters = ({ activeFilter, handleClick }) => {
       <div className="w30p">
         <button
           className={
-            activeFilter === "IN_PROGRESS" ? activeDangerClass : notActiveClass
+            activeFilter === "IN PROGRESS" ? activeDangerClass : notActiveClass
           }
-          onClick={() => handleClick("IN_PROGRESS")}
+          onClick={() => handleClick("IN PROGRESS")}
         >
           Nepatvirtintos
         </button>
