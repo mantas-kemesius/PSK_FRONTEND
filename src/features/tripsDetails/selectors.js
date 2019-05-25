@@ -67,6 +67,27 @@ export const getTripsByUserId = (state, userId) => {
   });
 };
 
+export const getTripsByUserIdWithoutFilters = (state, userId) => {
+  if (!state.tripDetails.relatedUserIds) return [];
+  const { byId, relatedUserIds } = state.tripDetails;
+  const tripDetailsIds = Object.keys(relatedUserIds).filter(
+    id => relatedUserIds[id] === userId
+  );
+  return tripDetailsIds.map(id => ({
+    trip: byId[id].trip,
+    tripDetailsId: id,
+    isApproved: byId[id].approvalMark,
+    transport: byId[id].car ? "Automobilis" : "Lėktuvas",
+    live: byId[id].hotel ? "Viešbutyje" : "Apartamentuose",
+    cantGo: !isEmployeeAvailableByGivenDates(
+      state,
+      byId[id].trip.departureDate,
+      byId[id].trip.returnDate,
+      userId
+    )
+  }));
+};
+
 export const getAlreadyGoingEmployeesData = (state, tripId) => {
   if (!state.trips.shouldConnect) return [];
   const { byId } = state.tripDetails;

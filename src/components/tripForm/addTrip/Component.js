@@ -18,7 +18,7 @@ const customStyles = {
 
 class TripForm extends React.Component {
   state = {
-    status: "PENDING",
+    status: "IN PROGRESS",
     destination: "",
     departureDate: null,
     returnDate: null,

@@ -1,5 +1,6 @@
 import React from "react";
 import Table from "./table/Container";
+import TripFilters from "./../tripsFilter/Container";
 
 const TripsTable = ({ isVisible }) => {
   if (!isVisible) {
@@ -10,8 +11,11 @@ const TripsTable = ({ isVisible }) => {
       <div className="w90p b-s1-grey p30 bs-light">
         <div className="pb20">
           <div className="df jc-sb">
-            <div className="w100p">
+            <div className="w55p">
               <h1 className="fz22">Kelionės</h1>
+            </div>
+            <div className="w45p">
+              <TripFilters />
             </div>
           </div>
         </div>
