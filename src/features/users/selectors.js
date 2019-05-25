@@ -27,6 +27,22 @@ export const selectEmployeeIds = state => {
   });
 };
 
+export const isEmployeeAvailableByGivenDates = (
+  state,
+  start,
+  end,
+  employeeId
+) => {
+  const selectedDates = {
+    start: new Date(start),
+    end: new Date(end)
+  };
+
+  const periods = selectUnavailableUserDatesByUserId(state, employeeId);
+
+  return !isPeriodOverlaps(selectedDates, periods);
+};
+
 export const isEmployeeAvailable = (state, employeeId) => {
   const selectedDates = {
     start: new Date(state.apartamentsAvailabilities.dates.from),

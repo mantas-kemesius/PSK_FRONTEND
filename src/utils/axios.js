@@ -7,6 +7,7 @@ export const PATHS = {
   TRIP: "/api/trip",
   TRIP_DETAILS: "/api/tripDetails",
   TRIP_DETAILS_CREATE: "/api/tripDetails/create",
+  TRIP_DETAILS_UPDATE: "/api/tripDetails/save",
   TRIP_SHOULD_CONNECT: "/api/trip/shouldConnect",
   AVAILABILITY: "/api/availability",
   OFFICE_APARTAMENTS: "/api/officeApartment",

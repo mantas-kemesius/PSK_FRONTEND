@@ -12,8 +12,14 @@ import { fetchTripsDetails } from "./../features/tripsDetails/actions";
 export const initialize = ({ dispatch }) => {
   dispatch(initBreakpoints());
   if (isAuth()) {
-    dispatch(fetchAllUsers());
     dispatch(setAuth(JSON.parse(localStorage.getItem("user")).username));
+  }
+  dispatch(fetchData());
+};
+
+export const fetchData = () => dispatch => {
+  if (isAuth()) {
+    dispatch(fetchAllUsers());
     dispatch(fetchTrips());
     dispatch(fetchTripsDetails());
     dispatch(fetchAvailabilities());

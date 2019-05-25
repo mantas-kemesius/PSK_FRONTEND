@@ -3,21 +3,30 @@ import React from "react";
 const Notifications = ({ arr, handleClick }) => {
   return (
     <div
-      className="w100p df pb20 mt20 p10"
+      className="w100p df pb20 mt20"
       style={{ justifyContent: "space-evenly", flexWrap: "wrap" }}
     >
       {arr &&
         arr.map(item => {
-          const text = item.isApproved ? "Patvirtinta" : "Nepatvirtinta";
-          const style = item.isApproved ? "bg-success cw" : "bg-danger cw";
+          const text = item.isApproved
+            ? "Patvirtinta"
+            : item.cantGo
+            ? "Kelionė vyksta užimtom dienom"
+            : "Nepatvirtinta";
+          const style = item.isApproved
+            ? "bg-success cw"
+            : item.cantGo
+            ? "bg-danger cw"
+            : "";
           return (
             <div
-              className={`cp b-s1-grey p30 bs-light ${style}`}
+              className={`b-s1-grey p30 bs-light ${style}`}
               key={`${item.tripDetailsId}`}
-              style={{ width: "26%", marginTop: 20 }}
+              style={{ width: "25%", marginTop: 20 }}
             >
               <div>
-                <div className="w100p pb20">
+                <div className="w100p fwb fz20 tac">{text}</div>
+                <div className="w100p pt20 pb20">
                   <strong>Išvyka į:</strong>{" "}
                   {item.trip.destinationOffice.country},{" "}
                   {item.trip.destinationOffice.city},{" "}
@@ -35,16 +44,23 @@ const Notifications = ({ arr, handleClick }) => {
                 <div className="w100p pb20">
                   <strong>Apgyvendinimas:</strong> {item.live}
                 </div>
-                <div className="w100p fwb fz20">{text}</div>
               </div>
-              <div className="pt20">
-                <button
-                  className="w100p h50 p10 fz18 bg-success bg-h-success cw fwb"
-                  onClick={() => handleClick(item.tripDetailsId)}
-                >
-                  Patvirtinti užklausą
-                </button>
-              </div>
+              {!item.cantGo && !item.isApproved && (
+                <div className="pt20">
+                  <button
+                    className="w100p h50 p10 fz18 bg-success bg-h-success cw fwb"
+                    onClick={() =>
+                      handleClick({
+                        tripDetailsId: item.tripDetailsId,
+                        startDate: item.trip.departureDate,
+                        endDate: item.trip.departureDate
+                      })
+                    }
+                  >
+                    Patvirtinti užklausą
+                  </button>
+                </div>
+              )}
             </div>
           );
         })}

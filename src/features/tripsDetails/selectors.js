@@ -1,4 +1,7 @@
-import { selectEmployeeIds } from "../../features/users/selectors";
+import {
+  selectEmployeeIds,
+  isEmployeeAvailableByGivenDates
+} from "../../features/users/selectors";
 
 export const getAvailableEmployeesForSelectInput = state => {
   const { byId } = state.users;
@@ -38,13 +41,30 @@ export const getTripsByUserId = (state, userId) => {
   const tripDetailsIds = Object.keys(relatedUserIds).filter(
     id => relatedUserIds[id] === userId
   );
-  return tripDetailsIds.map(id => ({
+  const data = tripDetailsIds.map(id => ({
     trip: byId[id].trip,
     tripDetailsId: id,
     isApproved: byId[id].approvalMark,
     transport: byId[id].car ? "Automobilis" : "Lėktuvas",
-    live: byId[id].hotel ? "Viešbutyje" : "Apartamentuose"
+    live: byId[id].hotel ? "Viešbutyje" : "Apartamentuose",
+    cantGo: !isEmployeeAvailableByGivenDates(
+      state,
+      byId[id].trip.departureDate,
+      byId[id].trip.returnDate,
+      userId
+    )
   }));
+  return data.filter(item => {
+    const isAll = state.filters.activeFilter === "ALL";
+    const isActive = state.filters.activeFilter === "ACTIVE";
+    const isPending = state.filters.activeFilter === "PENDING";
+    const isNotRelavant = state.filters.activeFilter === "NOT_RELAVANT";
+
+    if (isAll) return true;
+    if (isActive) return item.isApproved === true;
+    if (isPending) return item.isApproved === false && item.cantGo === false;
+    if (isNotRelavant) return item.cantGo === true;
+  });
 };
 
 export const getAlreadyGoingEmployeesData = (state, tripId) => {

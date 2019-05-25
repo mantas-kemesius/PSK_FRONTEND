@@ -4,9 +4,9 @@ import { getTripsByUserId } from "../../features/tripsDetails/selectors";
 import { approveTrip } from "../../features/tripsDetails/actions";
 
 const mapStateToProps = state => {
-  const data = getTripsByUserId(state, state.user.uuid);
+  // const data = getTripsByUserId(state, state.user.uuid);
   return {
-    arr: !!data && data
+    arr: getTripsByUserId(state, state.user.uuid)
   };
 };
 

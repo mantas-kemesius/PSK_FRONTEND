@@ -9,6 +9,7 @@ import offices from "./../features/offices/reducer";
 import officeApartaments from "./../features/officeApartaments/reducer";
 import apartamentsAvailabilities from "./../features/apartamentsAvailabilities/reducer";
 import usersAvailabilities from "./../features/availabilities/reducer";
+import filters from "./../features/filters/reducer";
 
 export default history =>
   combineReducers({
@@ -21,5 +22,6 @@ export default history =>
     officeApartaments,
     apartamentsAvailabilities,
     usersAvailabilities,
-    users
+    users,
+    filters
   });

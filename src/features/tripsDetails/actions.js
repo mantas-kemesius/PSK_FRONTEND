@@ -1,4 +1,4 @@
-import { authPost, authGet, PATHS } from "./../../utils/axios";
+import { authPost, authGet, authPut, PATHS } from "./../../utils/axios";
 import { SET_TRIPS } from "./constants";
 import { push } from "connected-react-router";
 import { toggleTripsDetailsForm } from "../../features/trips/actions";
@@ -6,15 +6,29 @@ import { getApartamentIdByOfficeId } from "../officeApartaments/selectors";
 import { setNotAvailableDates } from "../apartamentsAvailabilities/actions";
 import { setEmployeesNotAvailableDates } from "../availabilities/actions";
 
-export const fetchTripsDetails = ids => dispatch => {
+export const fetchTripsDetails = () => dispatch => {
   authGet(PATHS.TRIP_DETAILS).then(res => {
     dispatch(normaliseAndSave(res.data));
   });
 };
 
-export const approveTrip = tripDetailsId => (dispatch, getState) => {
-  console.log(tripDetailsId);
+export const approveTrip = ({ tripDetailsId, startDate, endDate }) => (
+  dispatch,
+  getState
+) => {
+  dispatch(
+    setEmployeesNotAvailableDates(startDate, endDate, [getState().user.uuid])
+  );
+  authPut(PATHS.TRIP_DETAILS_UPDATE, {
+    ...getState().tripDetails.byId[tripDetailsId],
+    approvalMark: true
+  }).then(res => {
+    dispatch(triggerSearch());
+  });
 };
+const triggerSearch = () => ({
+  type: "TRIGGER_FETCH"
+});
 
 const normaliseAndSave = data => dispatch => {
   let ids = [];

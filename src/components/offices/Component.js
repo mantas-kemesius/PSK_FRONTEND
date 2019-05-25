@@ -10,13 +10,8 @@ const FutureTripsTable = ({ isVisible }) => {
       <div className="w90p b-s1-grey p30 bs-light">
         <div className="pb20">
           <div className="df jc-sb">
-            <div className="w80p">
+            <div className="w100p">
               <h1 className="fz22">Biurai</h1>
-            </div>
-            <div className="w20p">
-              <button className="bg-success bg-h-success fwb h30 cw br5 bs-light w100p">
-                Pridėti nauja
-              </button>
             </div>
           </div>
         </div>
