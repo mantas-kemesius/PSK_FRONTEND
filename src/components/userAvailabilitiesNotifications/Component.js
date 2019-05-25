@@ -1,5 +1,10 @@
 import React from "react";
 
+const cutDate = date => {
+  const index = date.indexOf("T");
+  return date.substr(0, index);
+};
+
 const Notifications = ({ arr, handleClick }) => {
   return (
     <div
@@ -33,10 +38,11 @@ const Notifications = ({ arr, handleClick }) => {
                   {item.trip.destinationOffice.streetAddress}
                 </div>
                 <div className="w100p pb20">
-                  <strong>Išvykimo data:</strong> {item.trip.departureDate}
+                  <strong>Išvykimo data:</strong>{" "}
+                  {cutDate(item.trip.departureDate)}
                 </div>
                 <div className="w100p pb20">
-                  <strong>Grįžimo data:</strong> {item.trip.returnDate}
+                  <strong>Grįžimo data:</strong> {cutDate(item.trip.returnDate)}
                 </div>
                 <div className="w100p pb20">
                   <strong>Transporto priemonė:</strong> {item.transport}
