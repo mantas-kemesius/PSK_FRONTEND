@@ -7,6 +7,7 @@ import {
   TOGGLE_APARTAMENT_CHECKBOX
 } from "./constants";
 import { fetchTripsDetails } from "./../../features/tripsDetails/actions";
+import { setNotAvailableDates } from "../../features/apartamentsAvailabilities/actions";
 import { push } from "connected-react-router";
 
 export const fetchTrips = () => dispatch => {
@@ -52,6 +53,13 @@ export const addTrip = data => (dispatch, getState) => {
     }
   };
   dispatch(askOrTripShouldBeConnected(postData));
+  dispatch(
+    setNotAvailableDates(
+      data.departureDate.toISOString(),
+      data.returnDate.toISOString(),
+      data.destination
+    )
+  );
 };
 
 export const askOrTripShouldBeConnected = data => (dispatch, getState) => {

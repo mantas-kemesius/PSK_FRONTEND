@@ -2,7 +2,8 @@ import { SET_OFFICE_APARTAMENTS_AVAILABILIETS } from "./constants";
 
 const defaultState = {
   ids: [],
-  byId: {}
+  byId: {},
+  relatedApartamentsIds: {}
 };
 
 const reducer = (state = defaultState, action) => {

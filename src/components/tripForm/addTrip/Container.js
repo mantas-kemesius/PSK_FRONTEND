@@ -9,17 +9,24 @@ import {
   getOfficesForSelectInput,
   getDestinationsForSelectInput
 } from "./../../../features/offices/selectors";
-import { setSelectedOffice } from "./../../../features/offices/actions";
+import {
+  setSelectedOffice,
+  setDestinationOffice
+} from "./../../../features/offices/actions";
 import { getOrganizatorsForSelectInput } from "./../../../features/users/selectors";
+import { getUnavailableDates } from "./../../../features/apartamentsAvailabilities/selectors";
 
-const mapStateToProps = state => ({
-  offices: getOfficesForSelectInput(state),
-  destinations: getDestinationsForSelectInput(state),
-  organizators: getOrganizatorsForSelectInput(state),
-  isModalOpen: state.trips.isModalOpen,
-  isDestinationFieldActive: !state.offices.selectedTripStartId,
-  isCheckboxChecked: !!state.trips.isApartamentCheckboxChecked
-});
+const mapStateToProps = state => {
+  return {
+    offices: getOfficesForSelectInput(state),
+    destinations: getDestinationsForSelectInput(state),
+    organizators: getOrganizatorsForSelectInput(state),
+    isModalOpen: state.trips.isModalOpen,
+    isDestinationFieldActive: !state.offices.selectedTripStartId,
+    isCheckboxChecked: !!state.trips.isApartamentCheckboxChecked,
+    unavailableDates: getUnavailableDates(state)
+  };
+};
 
 export default connect(
   mapStateToProps,
@@ -27,6 +34,7 @@ export default connect(
     add: addTrip,
     handleBtnClick: connectTrips,
     setTripStartId: setSelectedOffice,
-    handleCheckboxChange: toggleApartamentCheckbox
+    handleCheckboxChange: toggleApartamentCheckbox,
+    setDestination: setDestinationOffice
   }
 )(TripForm);

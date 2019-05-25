@@ -91,8 +91,6 @@ class TripForm extends React.Component {
   };
 
   render() {
-    console.log(this.props.isWithDetails);
-    console.log(this.props.details);
     return (
       <>
         <div className="w100p df aic jc-center">

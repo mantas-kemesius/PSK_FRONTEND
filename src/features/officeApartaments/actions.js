@@ -10,6 +10,7 @@ export const fetchOfficeApartaments = () => dispatch => {
 const normaliseAndSave = data => dispatch => {
   let ids = [];
   let byId = {};
+  let relatedOfficeIds = {};
   data.forEach(item => {
     byId = {
       ...byId,
@@ -18,8 +19,12 @@ const normaliseAndSave = data => dispatch => {
       }
     };
     ids.push(item.uuid);
+    relatedOfficeIds = {
+      ...relatedOfficeIds,
+      [item.office.uuid]: item.uuid
+    };
   });
-  dispatch(save({ ids, byId }));
+  dispatch(save({ ids, byId, relatedOfficeIds }));
 };
 
 export const save = payload => ({

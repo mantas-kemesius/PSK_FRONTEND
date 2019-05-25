@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import TripsTable from "./Component";
 
-const tableHead = ["Šalis", "Miestas", "Adresas", "Veiksmai"];
+const tableHead = ["Šalis", "Miestas", "Adresas"];
 
 const mapStateToProps = state => {
   return { tableHead };

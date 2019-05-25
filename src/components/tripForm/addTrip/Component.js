@@ -20,10 +20,12 @@ class TripForm extends React.Component {
   state = {
     status: "PENDING",
     destination: "",
-    departureDate: new Date(),
-    returnDate: new Date(),
+    departureDate: null,
+    returnDate: null,
     coordinatorId: "",
-    officeId: ""
+    officeId: "",
+    departureDisabled: true,
+    destinationDisabled: true
   };
 
   handleDepartureDateChange = date => {
@@ -43,7 +45,12 @@ class TripForm extends React.Component {
   };
 
   onDestinationChange = e => {
-    this.setState({ destination: e.target.value });
+    this.setState({
+      destination: e.target.value,
+      departureDisabled: false,
+      destinationDisabled: false
+    });
+    this.props.setDestination(e.target.value);
   };
   handleCoordinatorChange = e => {
     this.setState({ coordinatorId: e.target.value });
@@ -59,6 +66,10 @@ class TripForm extends React.Component {
 
   handleCheckBoxChange = e => {
     this.props.handleCheckboxChange(e.target.checked);
+    this.setState({
+      departureDate: null,
+      returnDate: null
+    });
   };
 
   render() {
@@ -149,13 +160,14 @@ class TripForm extends React.Component {
               <DatePicker
                 selected={this.state.departureDate}
                 onChange={this.handleDepartureDateChange}
-                showTimeSelect
                 timeFormat="HH:mm"
                 timeIntervals={60}
-                dateFormat="yyyy-MM-dd HH:mm"
+                dateFormat="yyyy-MM-dd"
                 timeCaption="time"
                 className="w100p h30 p10 fz18 b-s1-grey"
-                excludeDates={[]}
+                placeholderText="Įveskite išvykimo data..."
+                excludeDates={this.props.unavailableDates}
+                disabled={this.state.departureDisabled}
               />
             </div>
             <div className="w100p pb20">
@@ -168,7 +180,10 @@ class TripForm extends React.Component {
                 timeIntervals={60}
                 dateFormat="yyyy-MM-dd HH:mm"
                 timeCaption="time"
+                placeholderText="Įveskite grįžimo data..."
                 className="w100p h30 p10 fz18 b-s1-grey"
+                excludeDates={this.props.unavailableDates}
+                disabled={this.state.destinationDisabled}
               />
             </div>
             <button

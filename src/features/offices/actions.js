@@ -1,5 +1,9 @@
 import { authPost, authPut, PATHS } from "./../../utils/axios";
-import { SET_OFFICES, SET_SELECTED_OFFICE } from "./constants";
+import {
+  SET_OFFICES,
+  SET_SELECTED_OFFICE,
+  SET_DESTINATION_OFFICE
+} from "./constants";
 import { push } from "connected-react-router";
 
 export const addNewOffice = data => dispatch => {
@@ -54,5 +58,10 @@ export const save = payload => ({
 
 export const setSelectedOffice = payload => ({
   type: SET_SELECTED_OFFICE,
+  payload
+});
+
+export const setDestinationOffice = payload => ({
+  type: SET_DESTINATION_OFFICE,
   payload
 });

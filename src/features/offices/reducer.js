@@ -1,4 +1,8 @@
-import { SET_OFFICES, SET_SELECTED_OFFICE } from "./constants";
+import {
+  SET_OFFICES,
+  SET_SELECTED_OFFICE,
+  SET_DESTINATION_OFFICE
+} from "./constants";
 
 const defaultState = {
   ids: [],
@@ -16,6 +20,11 @@ const reducer = (state = defaultState, action) => {
       return {
         ...state,
         selectedTripStartId: action.payload
+      };
+    case SET_DESTINATION_OFFICE:
+      return {
+        ...state,
+        destinationOfficeId: action.payload
       };
     default:
       return state;
