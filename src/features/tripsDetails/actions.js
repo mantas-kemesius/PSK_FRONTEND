@@ -24,8 +24,30 @@ export const approveTrip = ({ tripDetailsId, startDate, endDate }) => (
     approvalMark: true
   }).then(res => {
     dispatch(triggerSearch());
+    dispatch(checkTripsForStatusUpdate(tripDetailsId));
   });
 };
+
+export const checkTripsForStatusUpdate = tripDetailsId => (
+  dispatch,
+  getState
+) => {
+  const tripDetails = getState().tripDetails.byId[tripDetailsId];
+  const tripId = tripDetails.trip.uuid;
+  const { relatedTripIds } = getState().tripDetails;
+  const ids = Object.keys(relatedTripIds).filter(
+    id => relatedTripIds[id] === tripId
+  );
+  const details = ids.filter(
+    id => getState().tripDetails.byId[id].approvalMark === false
+  );
+  if (details.length <= 1) {
+    authPost(`/api/trip/${tripId}/updateStatus?status=CONFIRMED`).then(res =>
+      dispatch(triggerSearch())
+    );
+  }
+};
+
 const triggerSearch = () => ({
   type: "TRIGGER_FETCH"
 });
@@ -59,6 +81,7 @@ const normaliseAndSave = data => dispatch => {
 export const addTripDetails = data => (dispatch, getState) => {
   const postData = dispatch(generateTripDetailsPostData(data));
   authPost(PATHS.TRIP_DETAILS_CREATE, postData);
+  dispatch(triggerSearch());
   dispatch(push("/"));
   dispatch(toggleTripsDetailsForm(false));
 };

@@ -12,6 +12,7 @@ export const addNewOffice = data => dispatch => {
     dispatch(fetchOffices());
     dispatch(push("/"));
     dispatch(addApartaments(res.data, apartamentStreetAddress));
+    dispatch(triggerSearch());
   });
 };
 
@@ -27,6 +28,10 @@ export const addApartaments = (office, streetAddress) => (
   };
   authPut(PATHS.OFFICE_APARTAMENTS, [postData]);
 };
+
+const triggerSearch = () => ({
+  type: "TRIGGER_FETCH"
+});
 
 export const removeOffice = data => () => {
   authPut(PATHS.OFFICE_ADD, data);

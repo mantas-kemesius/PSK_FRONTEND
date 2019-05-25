@@ -13,7 +13,6 @@ import {
   setNotAvailableDates,
   setUnavailableDates
 } from "../../features/apartamentsAvailabilities/actions";
-import { push } from "connected-react-router";
 
 export const fetchTrips = () => dispatch => {
   authPost(PATHS.TRIP).then(res => {
