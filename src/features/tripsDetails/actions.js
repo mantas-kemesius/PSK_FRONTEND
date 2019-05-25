@@ -74,7 +74,7 @@ const generateTripDetailsPostData = ({
   }
 
   const postData = employeeIds.map(item => {
-    const ap = apartament ? { officeApartment: { uuid: apartamentId } } : {};
+    const ap = !hotel ? { officeApartment: { uuid: apartamentId } } : {};
     return {
       trip: {
         uuid: tripId

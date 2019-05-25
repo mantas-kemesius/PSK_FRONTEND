@@ -66,7 +66,9 @@ class TripForm extends React.Component {
         : this.props.isPossibleToBookApartaments && this.state.apartament,
       hotel: this.props.isApartamentsBooked
         ? false
-        : this.props.isPossibleToBookApartaments && this.state.hotel,
+        : this.props.isPossibleToBookApartaments
+        ? this.state.hotel
+        : true,
       car: this.state.car,
       ticket: this.state.ticket
     };

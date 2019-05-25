@@ -41,7 +41,9 @@ export const getTripsByUserId = (state, userId) => {
   return tripDetailsIds.map(id => ({
     trip: byId[id].trip,
     tripDetailsId: id,
-    isApproved: byId[id].approvalMark
+    isApproved: byId[id].approvalMark,
+    transport: byId[id].car ? "Automobilis" : "Lėktuvas",
+    live: byId[id].hotel ? "Viešbutyje" : "Apartamentuose"
   }));
 };
 

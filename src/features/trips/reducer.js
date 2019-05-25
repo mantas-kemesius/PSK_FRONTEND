@@ -12,13 +12,17 @@ const defaultState = {
   isModalOpen: false,
   ids: [],
   byId: {},
-  isApartamentCheckboxChecked: false
+  isApartamentCheckboxChecked: false,
+  tripId: "",
+  additionalTripId: "",
+  shouldConnect: false
 };
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case SET_TRIPS:
       return {
+        ...state,
         ...action.payload
       };
     case TOGGLE_MODAL:

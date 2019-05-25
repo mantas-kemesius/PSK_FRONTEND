@@ -29,6 +29,12 @@ const Notifications = ({ arr, handleClick }) => {
                 <div className="w100p pb20">
                   <strong>Grįžimo data:</strong> {item.trip.returnDate}
                 </div>
+                <div className="w100p pb20">
+                  <strong>Transporto priemonė:</strong> {item.transport}
+                </div>
+                <div className="w100p pb20">
+                  <strong>Apgyvendinimas:</strong> {item.live}
+                </div>
                 <div className="w100p fwb fz20">{text}</div>
               </div>
               <div className="pt20">

@@ -83,7 +83,10 @@ export const askOrTripShouldBeConnected = data => (dispatch, getState) => {
       }
     });
   } else {
-    authPut(PATHS.TRIP + `/false`, data);
+    authPut(PATHS.TRIP + `/false`, data).then(res =>
+      dispatch(setTripId(res.data.uuid))
+    );
+    dispatch(setShouldConnect(false));
     dispatch(toggleTripsDetailsForm(true));
   }
 };
