@@ -2,6 +2,9 @@ import { authPost, authGet, PATHS } from "./../../utils/axios";
 import { SET_TRIPS } from "./constants";
 import { push } from "connected-react-router";
 import { toggleTripsDetailsForm } from "../../features/trips/actions";
+import { getApartamentIdByOfficeId } from "../officeApartaments/selectors";
+import { setNotAvailableDates } from "../apartamentsAvailabilities/actions";
+import { setEmployeesNotAvailableDates } from "../availabilities/actions";
 
 export const fetchTripsDetails = ids => dispatch => {
   authGet(PATHS.TRIP_DETAILS).then(res => {
@@ -9,26 +12,34 @@ export const fetchTripsDetails = ids => dispatch => {
   });
 };
 
+export const approveTrip = tripDetailsId => (dispatch, getState) => {
+  console.log(tripDetailsId);
+};
+
 const normaliseAndSave = data => dispatch => {
   let ids = [];
   let byId = {};
   let relatedTripIds = {};
+  let relatedUserIds = {};
   data.forEach(item => {
-    const { trip, ...rest } = item;
     byId = {
       ...byId,
       [item.uuid]: {
-        ...rest
+        ...item
       }
     };
     ids.push(item.uuid);
     relatedTripIds = {
       ...relatedTripIds,
-      [item.uuid]: trip.uuid
+      [item.uuid]: item.trip.uuid
+    };
+    relatedUserIds = {
+      ...relatedUserIds,
+      [item.uuid]: item.appUser.uuid
     };
   });
 
-  dispatch(save({ ids, byId, relatedTripIds }));
+  dispatch(save({ ids, byId, relatedTripIds, relatedUserIds }));
 };
 
 export const addTripDetails = data => (dispatch, getState) => {
@@ -45,9 +56,25 @@ const generateTripDetailsPostData = ({
   hotel,
   employeeIds
 }) => (dispatch, getState) => {
-  const tripId = getState().trips.additionalTripId;
+  const tripId = getState().trips.shouldConnect
+    ? getState().trips.additionalTripId
+    : getState().trips.tripId;
+  const apartamentId = getApartamentIdByOfficeId(
+    getState(),
+    getState().offices.destinationOfficeId
+  );
+  if (apartament) {
+    dispatch(
+      setNotAvailableDates(
+        getState().apartamentsAvailabilities.dates.from,
+        getState().apartamentsAvailabilities.dates.till,
+        getState().offices.destinationOfficeId
+      )
+    );
+  }
+
   const postData = employeeIds.map(item => {
-    const ap = {};
+    const ap = apartament ? { officeApartment: { uuid: apartamentId } } : {};
     return {
       trip: {
         uuid: tripId
@@ -57,8 +84,8 @@ const generateTripDetailsPostData = ({
       },
       ticket,
       car,
-      hotel
-      // officeApartment: ap
+      hotel,
+      ...ap
     };
   });
   return postData;

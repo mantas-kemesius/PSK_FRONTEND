@@ -21,7 +21,7 @@ class TripForm extends React.Component {
   state = {
     employeeIds: [""],
     hotel: false,
-    apartament: false,
+    apartament: true,
     car: true,
     ticket: false
   };
@@ -59,7 +59,18 @@ class TripForm extends React.Component {
   };
 
   handleClick = () => {
-    this.props.add({ ...this.state });
+    const data = {
+      employeeIds: this.state.employeeIds,
+      apartament: this.props.isApartamentsBooked
+        ? true
+        : this.props.isPossibleToBookApartaments && this.state.apartament,
+      hotel: this.props.isApartamentsBooked
+        ? false
+        : this.props.isPossibleToBookApartaments && this.state.hotel,
+      car: this.state.car,
+      ticket: this.state.ticket
+    };
+    this.props.add({ ...data });
   };
 
   addAdditionalField = () => {
@@ -129,25 +140,35 @@ class TripForm extends React.Component {
   getTripDetailsForms = () => {
     return (
       <>
-        <div className="w100p pt20 pb20">
-          <h3>Apgyvendinimas</h3>
-          <div>
-            <input
-              type="radio"
-              checked={this.state.hotel}
-              onChange={() => this.onLivingPlaceChange("hotel")}
-            />
-            <label> Hotelis</label>
+        {this.props.isApartamentsBooked ? (
+          <div className="w100p pt20 pb20">
+            <h3>Apgyvendinimas: Devbridge apartamentuos</h3>
           </div>
-          <div>
-            <input
-              type="radio"
-              checked={this.state.apartament}
-              onChange={() => this.onLivingPlaceChange("apartament")}
-            />
-            <label> Devbridge apartamentai</label>
+        ) : this.props.isPossibleToBookApartaments ? (
+          <div className="w100p pt20 pb20">
+            <h3>Apgyvendinimas</h3>
+            <div>
+              <input
+                type="radio"
+                checked={this.state.apartament}
+                onChange={() => this.onLivingPlaceChange("apartament")}
+              />
+              <label> Devbridge apartamentai</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                checked={this.state.hotel}
+                onChange={() => this.onLivingPlaceChange("hotel")}
+              />
+              <label> Viešbutis</label>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="w100p pt20 pb20">
+            <h3>Apgyvendinimas: Viešbutis</h3>
+          </div>
+        )}
         <div className="w100p pb20">
           <h3>Keliaus su</h3>
           <div>

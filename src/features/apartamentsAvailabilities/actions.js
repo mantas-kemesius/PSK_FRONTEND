@@ -1,5 +1,8 @@
 import { authPost, authPut, PATHS } from "./../../utils/axios";
-import { SET_OFFICE_APARTAMENTS_AVAILABILIETS } from "./constants";
+import {
+  SET_OFFICE_APARTAMENTS_AVAILABILIETS,
+  SET_UNAVAILABLE_DATES
+} from "./constants";
 import { getApartamentIdByOfficeId } from "./../../features/officeApartaments/selectors";
 
 export const fetchApartamentsAvailabilities = () => dispatch => {
@@ -13,7 +16,7 @@ export const setNotAvailableDates = (
   unavailableTo,
   officeId
 ) => (dispatch, getState) => {
-  const officeApartamentId = getApartamentIdByOfficeId(getState(), officeId); //todo take id
+  const officeApartamentId = getApartamentIdByOfficeId(getState(), officeId);
   const postData = {
     unavailableFrom,
     unavailableTo,
@@ -21,9 +24,7 @@ export const setNotAvailableDates = (
       uuid: officeApartamentId
     }
   };
-  authPut(PATHS.APARTAMENT_AVAILABILITY, postData).then(res =>
-    console.log(res)
-  );
+  authPut(PATHS.APARTAMENT_AVAILABILITY, postData);
 };
 
 const normaliseAndSave = data => dispatch => {
@@ -48,5 +49,10 @@ const normaliseAndSave = data => dispatch => {
 
 export const save = payload => ({
   type: SET_OFFICE_APARTAMENTS_AVAILABILIETS,
+  payload
+});
+
+export const setUnavailableDates = payload => ({
+  type: SET_UNAVAILABLE_DATES,
   payload
 });

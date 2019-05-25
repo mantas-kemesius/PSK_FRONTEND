@@ -19,10 +19,37 @@ export const diffBetweenDates = (firstDate, secondDate) => {
   return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 };
 
+export const isPossibleToSelectApartament = state => {
+  const officeId = state.offices.destinationOfficeId;
+  if (!officeId) return [];
+  const apartamentId = getApartamentIdByOfficeId(state, officeId);
+  const datesFromState = getUnavailableDatesByApartamentId(state, apartamentId);
+  const selectedDates = {
+    start: new Date(state.apartamentsAvailabilities.dates.from),
+    end: new Date(state.apartamentsAvailabilities.dates.till)
+  };
+  let dates = [];
+  datesFromState.forEach(obj => {
+    dates = [...dates, { start: new Date(obj.from), end: new Date(obj.to) }];
+  });
+  return !isPeriodOverlaps(selectedDates, dates);
+};
+
+export const isPeriodOverlaps = (testPeriod, periods) => {
+  for (var i = 0; i < periods.length; i++) {
+    var period = periods[i];
+    if (period.start < testPeriod.start && period.end > testPeriod.start)
+      return true;
+    if (period.start > testPeriod.start && period.start < testPeriod.end)
+      return true;
+  }
+
+  return false;
+};
+
 export const generateRangeBetweenDates = (startDate, endDate) => {
   const n = diffBetweenDates(startDate, endDate);
   const dates = [new Date(startDate)];
-  console.log(dates);
   for (let i = 1; i < n; i++) {
     let dateInString = dates[i - 1].toISOString();
     dates.push(incrementOneDay(new Date(dateInString)));

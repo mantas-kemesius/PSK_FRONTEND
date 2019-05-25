@@ -8,7 +8,7 @@ import tripDetails from "./../features/tripsDetails/reducer";
 import offices from "./../features/offices/reducer";
 import officeApartaments from "./../features/officeApartaments/reducer";
 import apartamentsAvailabilities from "./../features/apartamentsAvailabilities/reducer";
-import availabilities from "./../features/availabilities/reducer";
+import usersAvailabilities from "./../features/availabilities/reducer";
 
 export default history =>
   combineReducers({
@@ -20,6 +20,6 @@ export default history =>
     offices,
     officeApartaments,
     apartamentsAvailabilities,
-    availabilities,
+    usersAvailabilities,
     users
   });

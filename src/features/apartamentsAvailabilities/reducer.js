@@ -1,4 +1,7 @@
-import { SET_OFFICE_APARTAMENTS_AVAILABILIETS } from "./constants";
+import {
+  SET_OFFICE_APARTAMENTS_AVAILABILIETS,
+  SET_UNAVAILABLE_DATES
+} from "./constants";
 
 const defaultState = {
   ids: [],
@@ -11,6 +14,11 @@ const reducer = (state = defaultState, action) => {
     case SET_OFFICE_APARTAMENTS_AVAILABILIETS:
       return {
         ...action.payload
+      };
+    case SET_UNAVAILABLE_DATES:
+      return {
+        ...state,
+        dates: { ...action.payload }
       };
     default:
       return state;

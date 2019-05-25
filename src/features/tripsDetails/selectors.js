@@ -16,6 +16,7 @@ export const getAvailableEmployeesForSelectInput = state => {
 };
 
 export const getTripDetails = state => {
+  if (!state.trips.shouldConnect) return {};
   const emplIds = getAlreadyGoingEmployeesIds(state);
   if (emplIds.length === 0 && !state.trips.additionalTripId)
     return { hotel: false, apartament: false, car: false, ticket: false };
@@ -31,14 +32,31 @@ export const getTripDetails = state => {
   };
 };
 
+export const getTripsByUserId = (state, userId) => {
+  if (!state.tripDetails.relatedUserIds) return [];
+  const { byId, relatedUserIds } = state.tripDetails;
+  const tripDetailsIds = Object.keys(relatedUserIds).filter(
+    id => relatedUserIds[id] === userId
+  );
+  return tripDetailsIds.map(id => ({
+    trip: byId[id].trip,
+    tripDetailsId: id,
+    isApproved: byId[id].approvalMark
+  }));
+};
+
 export const getAlreadyGoingEmployeesData = (state, tripId) => {
+  if (!state.trips.shouldConnect) return [];
   const { byId } = state.tripDetails;
   const tripDetailsIds = getAllTripDetailsIdsByTripId(state);
   return tripDetailsIds.map(item => {
     const employee = byId[item].appUser;
+    const context = byId[item].approvalMark
+      ? "Patvirtino užklausą"
+      : "Nepatvirtino užklausos";
     return {
       id: employee.uuid,
-      label: `${employee.name} ${employee.lastName}`
+      label: `${employee.name} ${employee.lastName} - (${context})`
     };
   });
 };

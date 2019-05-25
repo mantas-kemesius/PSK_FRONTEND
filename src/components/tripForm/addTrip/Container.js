@@ -24,7 +24,9 @@ const mapStateToProps = state => {
     isModalOpen: state.trips.isModalOpen,
     isDestinationFieldActive: !state.offices.selectedTripStartId,
     isCheckboxChecked: !!state.trips.isApartamentCheckboxChecked,
-    unavailableDates: getUnavailableDates(state)
+    unavailableDates: !!state.trips.isApartamentCheckboxChecked
+      ? getUnavailableDates(state)
+      : []
   };
 };
 

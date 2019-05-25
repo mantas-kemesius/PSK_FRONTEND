@@ -153,7 +153,7 @@ class TripForm extends React.Component {
                 checked={this.props.isCheckboxChecked}
                 onChange={this.handleCheckBoxChange}
               />{" "}
-              tikrinti datas pagal apartamentų prieinamumą
+              pasirinkti datas pagal apartamentų prieinamumą
             </div>
             <div className="w100p pb20">
               <div className="w100p pb10 fwb">Išvykimo data: </div>
@@ -175,10 +175,9 @@ class TripForm extends React.Component {
               <DatePicker
                 selected={this.state.returnDate}
                 onChange={this.handleReturnDateChange}
-                showTimeSelect
                 timeFormat="HH:mm"
                 timeIntervals={60}
-                dateFormat="yyyy-MM-dd HH:mm"
+                dateFormat="yyyy-MM-dd"
                 timeCaption="time"
                 placeholderText="Įveskite grįžimo data..."
                 className="w100p h30 p10 fz18 b-s1-grey"

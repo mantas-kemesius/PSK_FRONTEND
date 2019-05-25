@@ -29,7 +29,7 @@ export const addApartaments = (office, streetAddress) => (
 };
 
 export const removeOffice = data => () => {
-  authPut(PATHS.OFFICE_ADD, data).then(res => console.log(res));
+  authPut(PATHS.OFFICE_ADD, data);
 };
 
 export const fetchOffices = () => dispatch => {

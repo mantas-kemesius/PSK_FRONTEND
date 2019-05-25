@@ -1,4 +1,4 @@
-import { authPost, PATHS } from "./../../utils/axios";
+import { authPost, authPut, PATHS } from "./../../utils/axios";
 import { SET_AVAILABILITIES } from "./constants";
 
 export const fetchAvailabilities = () => dispatch => {
@@ -7,9 +7,28 @@ export const fetchAvailabilities = () => dispatch => {
   );
 };
 
+export const setEmployeesNotAvailableDates = (
+  unavailableFrom,
+  unavailableTo,
+  userIds
+) => (dispatch, getState) => {
+  const postData = userIds.map(userId => {
+    return {
+      unavailableFrom,
+      unavailableTo,
+      appUser: {
+        uuid: userId
+      },
+      reason: "TRIP"
+    };
+  });
+  authPut(PATHS.AVAILABILITY, postData);
+};
+
 const normaliseAndSave = data => dispatch => {
   let ids = [];
   let byId = {};
+  let relatedUserIds = {};
   data.forEach(item => {
     byId = {
       ...byId,
@@ -18,8 +37,12 @@ const normaliseAndSave = data => dispatch => {
       }
     };
     ids.push(item.uuid);
+    relatedUserIds = {
+      ...relatedUserIds,
+      [item.uuid]: item.appUser.uuid
+    };
   });
-  dispatch(save({ ids, byId }));
+  dispatch(save({ ids, byId, relatedUserIds }));
 };
 
 export const save = payload => ({

@@ -3,7 +3,9 @@ import {
   TOGGLE_MODAL,
   TOGGLE_TRIP_DETAILS_FORM,
   SHOULD_BE_CONNECTED,
-  TOGGLE_APARTAMENT_CHECKBOX
+  TOGGLE_APARTAMENT_CHECKBOX,
+  SHOULD_CONNECT,
+  SET_TRIP_ID
 } from "./constants";
 
 const defaultState = {
@@ -24,10 +26,20 @@ const reducer = (state = defaultState, action) => {
         ...state,
         isModalOpen: action.payload
       };
+    case SHOULD_CONNECT:
+      return {
+        ...state,
+        shouldConnect: action.payload
+      };
     case SHOULD_BE_CONNECTED:
       return {
         ...state,
         additionalTripId: action.payload
+      };
+    case SET_TRIP_ID:
+      return {
+        ...state,
+        tripId: action.payload
       };
     case TOGGLE_TRIP_DETAILS_FORM:
       return {

@@ -7,14 +7,19 @@ import {
   getAlreadyGoingEmployeesData,
   getTripDetails
 } from "./../../../features/tripsDetails/selectors";
+import { isPossibleToSelectApartament } from "../../../features/apartamentsAvailabilities/selectors";
 
-const mapStateToProps = state => ({
-  employees: getAvailableEmployeesForSelectInput(state),
-  goingEmployees: getAlreadyGoingEmployeesData(state),
-  isModalOpen: state.trips.isModalOpen,
-  details: getTripDetails(state),
-  isWithDetails: !!state.trips.additionalTripId
-});
+const mapStateToProps = state => {
+  return {
+    employees: getAvailableEmployeesForSelectInput(state),
+    goingEmployees: getAlreadyGoingEmployeesData(state),
+    isModalOpen: state.trips.isModalOpen,
+    details: state.trips.shouldConnect ? getTripDetails(state) : null,
+    isWithDetails: state.trips.shouldConnect,
+    isApartamentsBooked: !!state.trips.isApartamentCheckboxChecked,
+    isPossibleToBookApartaments: isPossibleToSelectApartament(state)
+  };
+};
 
 export default connect(
   mapStateToProps,
