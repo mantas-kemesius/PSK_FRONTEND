@@ -33,15 +33,11 @@ class DynamicColumnChart extends Component {
           <div className="w30p">
             <select
               className="w100p h50 p10 fz18 b-s1-grey"
-              value={this.state.years}
               onChange={this.handleYearsChange}
+              value={this.props.year}
             >
               {this.props.years.map(y => (
-                <option
-                  key={`${y}`}
-                  value={`${y}`}
-                  selected={y === this.props.year}
-                >
+                <option key={`${y}`} value={`${y}`}>
                   {y}
                 </option>
               ))}
