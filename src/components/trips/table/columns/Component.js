@@ -10,7 +10,8 @@ const Columns = ({
   isVisible,
   id,
   isButtonActive,
-  isConfirmed
+  isConfirmed,
+  handleClick
 }) => {
   if (!ready) {
     return null;
@@ -30,9 +31,7 @@ const Columns = ({
                 : { padding: 4 }
             }
             disabled={!isButtonActive}
-            onClick={() => {
-              console.log(id);
-            }}
+            onClick={() => handleClick(id)}
           >
             Patvirtinti
           </button>

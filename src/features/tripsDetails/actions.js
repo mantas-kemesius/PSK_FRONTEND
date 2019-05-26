@@ -1,4 +1,10 @@
-import { authPost, authGet, authPut, PATHS } from "./../../utils/axios";
+import {
+  authPost,
+  authGet,
+  authPut,
+  authDelete,
+  PATHS
+} from "./../../utils/axios";
 import { SET_TRIPS } from "./constants";
 import { push } from "connected-react-router";
 import { toggleTripsDetailsForm } from "../../features/trips/actions";
@@ -24,7 +30,6 @@ export const approveTrip = ({ tripDetailsId, startDate, endDate }) => (
     approved: true
   }).then(res => {
     dispatch(triggerSearch());
-    dispatch(checkTripsForStatusUpdate(tripDetailsId));
   });
 };
 
@@ -46,6 +51,14 @@ export const checkTripsForStatusUpdate = tripDetailsId => (
       dispatch(triggerSearch())
     );
   }
+};
+
+export const setTripConfirmed = tripId => dispatch => {
+  authDelete(`/api/tripDetails/removeUnapproved/${tripId}`).then(res =>
+    authPost(`/api/trip/${tripId}/updateStatus?status=CONFIRMED`).then(res =>
+      dispatch(triggerSearch())
+    )
+  );
 };
 
 const triggerSearch = () => ({

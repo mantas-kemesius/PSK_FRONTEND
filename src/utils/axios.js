@@ -61,6 +61,14 @@ export const authPost = (url, data = {}) => {
   });
 };
 
+export const authDelete = (url, data = {}) => {
+  return axios({
+    method: "DELETE",
+    ...authHeaders(url),
+    data: data
+  });
+};
+
 export const authPut = (url, data = {}) => {
   return axios({
     method: "PUT",

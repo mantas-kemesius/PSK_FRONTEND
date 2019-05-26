@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import Columns from "./Component";
+import { setTripConfirmed } from "./../../../../features/tripsDetails/actions";
 
 const mapStateToProps = (state, { id }) => {
   const trip = state.trips.byId[id];
@@ -26,5 +27,7 @@ const mapStateToProps = (state, { id }) => {
 
 export default connect(
   mapStateToProps,
-  null
+  {
+    handleClick: setTripConfirmed
+  }
 )(Columns);
