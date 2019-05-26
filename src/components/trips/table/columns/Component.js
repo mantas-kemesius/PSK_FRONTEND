@@ -1,6 +1,9 @@
 import React from "react";
 
-const Columns = ({ trip, trips, ready, isVisible, id }) => {
+const activeClassName = "w100p fz16 bg-success cw fwb";
+const notActiveClassName = "w100p fz16 fwb b-s1-grey";
+
+const Columns = ({ trip, trips, ready, isVisible, id, isButtonActive }) => {
   if (!ready) {
     return null;
   }
@@ -11,8 +14,11 @@ const Columns = ({ trip, trips, ready, isVisible, id }) => {
       })}
       <td key="veiksmai">
         <button
-          className="w100p fz16 bg-success cw fwb"
-          style={{ padding: 4 }}
+          className={isButtonActive ? activeClassName : notActiveClassName}
+          style={
+            !isButtonActive ? { color: "#f1f1f1", padding: 4 } : { padding: 4 }
+          }
+          disabled={!isButtonActive}
           onClick={() => {
             console.log(id);
           }}
