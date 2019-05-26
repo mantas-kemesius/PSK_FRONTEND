@@ -5,6 +5,7 @@ const URL = "http://localhost:8080";
 export const PATHS = {
   AUTH: "/api/login",
   REGISTER: "/api/user/add",
+  CHANGE_PASSWORD: "/api/user/changePassword",
   TRIP: "/api/trip",
   TRIP_DETAILS: "/api/tripDetails",
   TRIP_DETAILS_CREATE: "/api/tripDetails/create",

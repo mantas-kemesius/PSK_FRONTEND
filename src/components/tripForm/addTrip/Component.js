@@ -64,14 +64,6 @@ class TripForm extends React.Component {
     this.setState({ status: e.target.value });
   };
 
-  handleCheckBoxChange = e => {
-    this.props.handleCheckboxChange(e.target.checked);
-    this.setState({
-      departureDate: null,
-      returnDate: null
-    });
-  };
-
   render() {
     return (
       <>
@@ -146,14 +138,6 @@ class TripForm extends React.Component {
                     </option>
                   ))}
               </select>
-            </div>
-            <div className="w100p pb20">
-              <input
-                type="checkbox"
-                checked={this.props.isCheckboxChecked}
-                onChange={this.handleCheckBoxChange}
-              />{" "}
-              pasirinkti datas pagal apartamentų prieinamumą
             </div>
             <div className="w100p pb20">
               <div className="w100p pb10 fwb">Išvykimo data: </div>

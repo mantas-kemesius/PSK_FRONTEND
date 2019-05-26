@@ -3,7 +3,7 @@ import React from "react";
 class RegisterForm extends React.Component {
   state = {
     oldPassword: "",
-    password: ""
+    newPassword: ""
   };
 
   handleClick = () => {
@@ -15,7 +15,7 @@ class RegisterForm extends React.Component {
   };
 
   onPasswordChange = e => {
-    this.setState({ password: e.target.value });
+    this.setState({ newPassword: e.target.value });
   };
 
   render() {
@@ -34,7 +34,7 @@ class RegisterForm extends React.Component {
             placeholder="password"
             type="password"
             className="w95p h40 p10 fz18 b0 b-s1-grey"
-            value={this.state.password}
+            value={this.state.newPassword}
             onChange={this.onPasswordChange}
           />
           <button

@@ -1,4 +1,10 @@
-import { authGet, basicPost, authPut, PATHS } from "./../../utils/axios";
+import {
+  authGet,
+  basicPost,
+  authPut,
+  authPost,
+  PATHS
+} from "./../../utils/axios";
 import { SET_AUTH, SET_DETAILS, SIGNOUT } from "./constants";
 import { push } from "connected-react-router";
 import { fetchTrips } from "./../../features/trips/actions";
@@ -12,8 +18,13 @@ export const register = data => dispatch => {
   });
 };
 
-export const changePassword = data => dispatch => {
-  authPut(PATHS.REGISTER, { ...data, office: null }).then(res => {
+export const changePassword = data => (dispatch, getState) => {
+  authPost(
+    `${PATHS.CHANGE_PASSWORD}?oldPassword=${data.oldPassword}&newPassword=${
+      data.newPassword
+    }`,
+    getState().user
+  ).then(res => {
     dispatch(push("/"));
   });
 };
