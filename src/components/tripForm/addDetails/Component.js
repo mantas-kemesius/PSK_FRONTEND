@@ -20,10 +20,10 @@ const getNotBusyEmployees = (organizators, ids) => {
 class TripForm extends React.Component {
   state = {
     employeeIds: [""],
-    hotel: false,
+    hotelNeeded: false,
     apartament: true,
-    car: true,
-    ticket: false
+    carNeeded: true,
+    ticketNeeded: false
   };
 
   getEmployeeSelectInputs = () => {
@@ -64,13 +64,13 @@ class TripForm extends React.Component {
       apartament: this.props.isApartamentsBooked
         ? true
         : this.props.isPossibleToBookApartaments && this.state.apartament,
-      hotel: this.props.isApartamentsBooked
+      hotelNeeded: this.props.isApartamentsBooked
         ? false
         : this.props.isPossibleToBookApartaments
-        ? this.state.hotel
+        ? this.state.hotelNeeded
         : true,
-      car: this.state.car,
-      ticket: this.state.ticket
+      carNeeded: this.state.carNeeded,
+      ticketNeeded: this.state.ticketNeeded
     };
     this.props.add({ ...data });
   };
@@ -89,17 +89,17 @@ class TripForm extends React.Component {
 
   onLivingPlaceChange = key => {
     if (key === "hotel") {
-      this.setState({ hotel: true, apartament: false });
+      this.setState({ hotelNeeded: true, apartament: false });
     } else {
-      this.setState({ apartament: true, hotel: false });
+      this.setState({ apartament: true, hotelNeeded: false });
     }
   };
 
   onTransportChange = key => {
     if (key === "car") {
-      this.setState({ car: true, ticket: false });
+      this.setState({ carNeeded: true, ticketNeeded: false });
     } else {
-      this.setState({ ticket: true, car: false });
+      this.setState({ ticketNeeded: true, carNeeded: false });
     }
   };
 
@@ -160,7 +160,7 @@ class TripForm extends React.Component {
             <div>
               <input
                 type="radio"
-                checked={this.state.hotel}
+                checked={this.state.hotelNeeded}
                 onChange={() => this.onLivingPlaceChange("hotel")}
               />
               <label> Viešbutis</label>
@@ -176,7 +176,7 @@ class TripForm extends React.Component {
           <div>
             <input
               type="radio"
-              checked={this.state.car}
+              checked={this.state.carNeeded}
               onChange={() => this.onTransportChange("car")}
             />
             <label> Automobiliu</label>
@@ -184,7 +184,7 @@ class TripForm extends React.Component {
           <div>
             <input
               type="radio"
-              checked={this.state.ticket}
+              checked={this.state.ticketNeeded}
               onChange={() => this.onTransportChange("ticket")}
             />
             <label> Lektuvu</label>
@@ -200,14 +200,15 @@ class TripForm extends React.Component {
         <div className="w100p pt20">
           <h3>
             Apgyvendinimas:{" "}
-            {this.props.details.hotel
+            {this.props.details.hotelNeeded
               ? "Viešbutyje"
               : "Devbridge apartamentuos"}
           </h3>
         </div>
         <div className="w100p pt20 pb20">
           <h3>
-            Keliaus su: {this.props.details.car ? "Automobiliu" : "Lėktuvu"}
+            Keliaus su:{" "}
+            {this.props.details.carNeeded ? "Automobiliu" : "Lėktuvu"}
           </h3>
         </div>
       </div>

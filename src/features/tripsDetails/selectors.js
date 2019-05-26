@@ -22,15 +22,20 @@ export const getTripDetails = state => {
   if (!state.trips.shouldConnect) return {};
   const emplIds = getAlreadyGoingEmployeesIds(state);
   if (emplIds.length === 0 && !state.trips.additionalTripId)
-    return { hotel: false, apartament: false, car: false, ticket: false };
+    return {
+      hotelNeeded: false,
+      apartament: false,
+      carNeeded: false,
+      ticketNeeded: false
+    };
 
   const tripDetailsIds = getAllTripDetailsIdsByTripId(state);
   const details = tripDetailsIds.map(item => state.tripDetails.byId[item]);
   const tripDetail = details[0];
   return {
-    car: tripDetail.car,
-    hotel: tripDetail.hotel,
-    ticket: tripDetail.ticket,
+    carNeeded: tripDetail.carNeeded,
+    hotelNeeded: tripDetail.hotelNeeded,
+    ticketNeeded: tripDetail.ticketNeeded,
     apartament: !!tripDetail.officeApartament
   };
 };
@@ -44,9 +49,9 @@ export const getTripsByUserId = (state, userId) => {
   const data = tripDetailsIds.map(id => ({
     trip: byId[id].trip,
     tripDetailsId: id,
-    isApproved: byId[id].approvalMark,
-    transport: byId[id].car ? "Automobilis" : "Lėktuvas",
-    live: byId[id].hotel ? "Viešbutyje" : "Apartamentuose",
+    isApproved: byId[id].approved,
+    transport: byId[id].carNeeded ? "Automobilis" : "Lėktuvas",
+    live: byId[id].hotelNeeded ? "Viešbutyje" : "Apartamentuose",
     cantGo: !isEmployeeAvailableByGivenDates(
       state,
       byId[id].trip.departureDate,
@@ -76,9 +81,9 @@ export const getTripsByUserIdWithoutFilters = (state, userId) => {
   return tripDetailsIds.map(id => ({
     trip: byId[id].trip,
     tripDetailsId: id,
-    isApproved: byId[id].approvalMark,
-    transport: byId[id].car ? "Automobilis" : "Lėktuvas",
-    live: byId[id].hotel ? "Viešbutyje" : "Apartamentuose",
+    isApproved: byId[id].approved,
+    transport: byId[id].carNeeded ? "Automobilis" : "Lėktuvas",
+    live: byId[id].hotelNeeded ? "Viešbutyje" : "Apartamentuose",
     cantGo: !isEmployeeAvailableByGivenDates(
       state,
       byId[id].trip.departureDate,
@@ -94,7 +99,7 @@ export const getAlreadyGoingEmployeesData = (state, tripId) => {
   const tripDetailsIds = getAllTripDetailsIdsByTripId(state);
   return tripDetailsIds.map(item => {
     const employee = byId[item].appUser;
-    const context = byId[item].approvalMark
+    const context = byId[item].approved
       ? "Patvirtino užklausą"
       : "Nepatvirtino užklausos";
     return {

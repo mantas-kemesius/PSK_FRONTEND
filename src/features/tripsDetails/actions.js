@@ -21,7 +21,7 @@ export const approveTrip = ({ tripDetailsId, startDate, endDate }) => (
   );
   authPut(PATHS.TRIP_DETAILS_UPDATE, {
     ...getState().tripDetails.byId[tripDetailsId],
-    approvalMark: true
+    approved: true
   }).then(res => {
     dispatch(triggerSearch());
     dispatch(checkTripsForStatusUpdate(tripDetailsId));
@@ -87,10 +87,10 @@ export const addTripDetails = data => (dispatch, getState) => {
 };
 
 const generateTripDetailsPostData = ({
-  car,
-  ticket,
+  carNeeded,
+  ticketNeeded,
   apartament,
-  hotel,
+  hotelNeeded,
   employeeIds
 }) => (dispatch, getState) => {
   const tripId = getState().trips.shouldConnect
@@ -111,7 +111,7 @@ const generateTripDetailsPostData = ({
   }
 
   const postData = employeeIds.map(item => {
-    const ap = !hotel ? { officeApartment: { uuid: apartamentId } } : {};
+    const ap = !hotelNeeded ? { officeApartment: { uuid: apartamentId } } : {};
     return {
       trip: {
         uuid: tripId
@@ -119,9 +119,9 @@ const generateTripDetailsPostData = ({
       appUser: {
         uuid: item
       },
-      ticket,
-      car,
-      hotel,
+      ticketNeeded,
+      carNeeded,
+      hotelNeeded,
       ...ap
     };
   });
