@@ -32,7 +32,7 @@ export const createdTripStats = state => {
   return {
     metrics: Object.keys(allMonths)
       .map(item => {
-        return { label: item, y: allMonths[item] };
+        return { label: item + " mėn.", y: allMonths[item] };
       })
       .sort(compare),
     years: years.filter(onlyUnique).sort()

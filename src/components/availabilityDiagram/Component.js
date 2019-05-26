@@ -18,7 +18,7 @@ class DynamicColumnChart extends Component {
   render() {
     const options = {
       title: {
-        text: "Vykstančios kelionės"
+        text: "Prasidėsiančios/Vykstančios kelionės"
       },
       data: [
         {
@@ -30,15 +30,15 @@ class DynamicColumnChart extends Component {
     return (
       <div className="w100p df jc-center pt20">
         <div className="w90p b-s1-grey p30 bs-light">
-          <div className="w30p">
+          <div className="w100p pb20">
             <select
-              className="w100p h50 p10 fz18 b-s1-grey"
+              className="w15p h50 p10 fz18 b-s1-grey"
               onChange={this.handleYearsChange}
               value={this.props.year}
             >
               {this.props.years.map(y => (
                 <option key={`${y}`} value={`${y}`}>
-                  {y}
+                  {y} metai
                 </option>
               ))}
             </select>

@@ -60,10 +60,6 @@ class TripForm extends React.Component {
     this.props.setTripStartId(e.target.value);
   };
 
-  onStatusChange = e => {
-    this.setState({ status: e.target.value });
-  };
-
   render() {
     return (
       <>
@@ -108,16 +104,6 @@ class TripForm extends React.Component {
                     </option>
                   ))}
               </select>
-            </div>
-            <div className="w100p pb20">
-              <div className="w100p pb10 fwb">Būsena: </div>
-              <input
-                placeholder="Būsena"
-                type="text"
-                className="w95p h30 p10 fz18 b-s1-grey"
-                value={this.state.status}
-                onChange={this.onStatusChange}
-              />
             </div>
             <div className="w100p pb20">
               <div className="w100p pb10 fwb">
