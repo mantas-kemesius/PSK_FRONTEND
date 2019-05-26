@@ -54,11 +54,10 @@ export const checkTripsForStatusUpdate = tripDetailsId => (
 };
 
 export const setTripConfirmed = tripId => dispatch => {
-  authDelete(`/api/tripDetails/removeUnapproved/${tripId}`).then(res =>
-    authPost(`/api/trip/${tripId}/updateStatus?status=CONFIRMED`).then(res =>
-      dispatch(triggerSearch())
-    )
+  authPost(`/api/trip/${tripId}/updateStatus?status=CONFIRMED`).then(res =>
+    dispatch(triggerSearch())
   );
+  authDelete(`/api/tripDetails/removeUnapproved/${tripId}`);
 };
 
 const triggerSearch = () => ({
