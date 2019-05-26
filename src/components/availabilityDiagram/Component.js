@@ -12,6 +12,9 @@ class DynamicColumnChart extends Component {
       format: e.target.value
     });
   };
+  handleYearsChange = e => {
+    this.props.handleYearsChange(e.target.value);
+  };
   render() {
     const options = {
       title: {
@@ -20,19 +23,30 @@ class DynamicColumnChart extends Component {
       data: [
         {
           type: "column",
-          dataPoints: [
-            { label: "Apple", y: 10 },
-            { label: "Orange", y: 15 },
-            { label: "Banana", y: 25 },
-            { label: "Mango", y: 30 },
-            { label: "Grape", y: 28 }
-          ]
+          dataPoints: [...this.props.metrics]
         }
       ]
     };
     return (
       <div className="w100p df jc-center pt20">
         <div className="w90p b-s1-grey p30 bs-light">
+          <div className="w30p">
+            <select
+              className="w100p h50 p10 fz18 b-s1-grey"
+              value={this.state.years}
+              onChange={this.handleYearsChange}
+            >
+              {this.props.years.map(y => (
+                <option
+                  key={`${y}`}
+                  value={`${y}`}
+                  selected={y === this.props.year}
+                >
+                  {y}
+                </option>
+              ))}
+            </select>
+          </div>
           <div>
             <CanvasJSChart
               options={options}
@@ -43,7 +57,7 @@ class DynamicColumnChart extends Component {
             <div className="w30p">
               <select
                 className="w100p h50 p10 fz18 b-s1-grey"
-                value={this.state.format}
+                value={this.props.year}
                 onChange={this.handleFormatChange}
               >
                 <option key="1" value="jpg">

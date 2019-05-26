@@ -1,5 +1,5 @@
 import React from "react";
-import AvailabilityDiagram from "./../../../components/availabilityDiagram/Component";
+import AvailabilityDiagram from "./../../../components/availabilityDiagram/Container";
 
 const Body = () => {
   return (

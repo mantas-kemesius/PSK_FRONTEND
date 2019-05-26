@@ -39,7 +39,7 @@ export const checkTripsForStatusUpdate = tripDetailsId => (
     id => relatedTripIds[id] === tripId
   );
   const details = ids.filter(
-    id => getState().tripDetails.byId[id].approvalMark === false
+    id => getState().tripDetails.byId[id].approved === false
   );
   if (details.length <= 1) {
     authPost(`/api/trip/${tripId}/updateStatus?status=CONFIRMED`).then(res =>

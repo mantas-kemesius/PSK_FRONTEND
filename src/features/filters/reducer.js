@@ -1,8 +1,9 @@
-import { SET_FILTER, SET_TRIP_FILTER } from "./constants";
+import { SET_FILTER, SET_TRIP_FILTER, SET_YEARS } from "./constants";
 
 const defaultState = {
   activeFilter: "ALL",
-  activeTripFilter: "ALL"
+  activeTripFilter: "ALL",
+  years: "2019"
 };
 
 const reducer = (state = defaultState, action) => {
@@ -16,6 +17,11 @@ const reducer = (state = defaultState, action) => {
       return {
         ...state,
         activeTripFilter: action.payload
+      };
+    case SET_YEARS:
+      return {
+        ...state,
+        years: action.payload
       };
     default:
       return state;
