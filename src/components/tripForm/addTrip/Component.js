@@ -128,9 +128,6 @@ class TripForm extends React.Component {
                 value={this.state.coordinatorId}
                 onChange={this.handleCoordinatorChange}
               >
-                <option key="Koordinatorius" value="">
-                  Koordinatorius
-                </option>
                 {!!this.props.organizators &&
                   this.props.organizators.map(item => (
                     <option key={`${item.id}`} value={item.id}>

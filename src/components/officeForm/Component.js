@@ -38,6 +38,7 @@ class OfficeForm extends React.Component {
           <div className="mt10p mb5p">
             <h2>Pridėti naują biurą:</h2>
           </div>
+          <div className="w100p pb10 fwb">Šalis: </div>
           <input
             placeholder="Šalis"
             type="text"
@@ -45,6 +46,7 @@ class OfficeForm extends React.Component {
             value={this.state.country}
             onChange={this.onCountryChange}
           />
+          <div className="w100p pb10 pt20 fwb">Miestas: </div>
           <input
             placeholder="Miestas"
             type="text"
@@ -52,6 +54,7 @@ class OfficeForm extends React.Component {
             value={this.state.city}
             onChange={this.onCityChange}
           />
+          <div className="w100p pb10 pt20 fwb">Biuro adresas: </div>
           <input
             placeholder="Adresas"
             type="text"
@@ -59,6 +62,7 @@ class OfficeForm extends React.Component {
             value={this.state.streetAddress}
             onChange={this.onAddressChange}
           />
+          <div className="w100p pb10 pt20 fwb">Apartamentų adresas: </div>
           <input
             placeholder="Apartamentų adresas"
             type="text"
@@ -66,12 +70,14 @@ class OfficeForm extends React.Component {
             value={this.state.apartamentStreetAddress}
             onChange={this.onApartamentAddressChange}
           />
-          <button
-            className="w100p h50 p10 fz18 bg-default cw fwb"
-            onClick={this.handleClick}
-          >
-            Pridėti
-          </button>
+          <div className="w100p pt20">
+            <button
+              className="w100p h50 p10 fz18 bg-default cw fwb"
+              onClick={this.handleClick}
+            >
+              Pridėti
+            </button>
+          </div>
         </div>
       </div>
     );
