@@ -7,7 +7,8 @@ const tableHead = [
   "Statusas",
   "Koordinatorius",
   "Išvyk. Data",
-  "Grįžimo Data"
+  "Grįžimo Data",
+  "Veiksmai"
 ];
 
 const mapStateToProps = state => {

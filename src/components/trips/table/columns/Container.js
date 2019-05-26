@@ -16,6 +16,7 @@ const mapStateToProps = (state, { id }) => {
       departureDate,
       returnDate
     ],
+    id: trip.uuid,
     trips: trip,
     ready: !!state.trips && !!state.trips.byId
   };
