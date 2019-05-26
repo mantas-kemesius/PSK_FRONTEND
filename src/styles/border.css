@@ -1,34 +1,45 @@
 .bt-s1-grey {
-    border-top: solid 1px #e5e5e5;
+  border-top: solid 1px #e5e5e5;
 }
 
 .b-s1-grey {
-    border: solid 1px #e5e5e5;
+  border: solid 1px #e5e5e5;
+}
+.grey-hover:hover {
+  border-bottom: 3px solid #cfcfcf;
+}
+
+.bh-s1-grey {
+  border-left: solid 1px #e5e5e5;
+  border-right: solid 1px #e5e5e5;
+}
+.br-s1-grey {
+  border-right: solid 1px #e5e5e5;
 }
 
 .bb-s1-purple {
-    border-bottom: solid 3px #4a67e2;
+  border-bottom: solid 3px #4a67e2;
 }
 .bt-s1-light-grey {
-    border-top: solid 1px #e4e4e4;
+  border-top: solid 1px #e4e4e4;
 }
 
 .bb-s1-light-grey {
-    border-bottom: solid 1px #e4e4e4;
+  border-bottom: solid 1px #e4e4e4;
 }
 
 .bb-s1-dark-grey {
-    border-bottom: solid 1px #767676;
+  border-bottom: solid 1px #767676;
 }
 .bb-s1-dark-grey-h:hover {
-    border-bottom: solid 1px #767676;
+  border-bottom: solid 1px #767676;
 }
 .bb-s2-dark-grey-h:hover {
-    border-bottom: solid 2px #767676;
+  border-bottom: solid 2px #767676;
 }
 .bb-s3-dark-grey-h:hover {
-    border-bottom: solid 3px #767676;
+  border-bottom: solid 3px #767676;
 }
 .bb-s4-dark-grey-h:hover {
-    border-bottom: solid 4px #767676;
+  border-bottom: solid 4px #767676;
 }
