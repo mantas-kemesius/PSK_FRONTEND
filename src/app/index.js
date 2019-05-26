@@ -6,6 +6,7 @@ import Profile from "./profile/Component";
 import Stats from "./stats/Component";
 import Login from "./login/Component";
 import Register from "./registration/Component";
+import ChangePassword from "./changePassword/Component";
 import NotFoundPage from "./404/Component";
 import { Route, Switch } from "react-router";
 
@@ -20,6 +21,7 @@ class App extends React.Component {
         <Route exact path="/stats" render={() => <Stats />} />
         <Route exact path="/login" render={() => <Login />} />
         <Route exact path="/register" render={() => <Register />} />
+        <Route exact path="/changePassword" render={() => <ChangePassword />} />
         <Route render={() => <NotFoundPage />} />
       </Switch>
     );

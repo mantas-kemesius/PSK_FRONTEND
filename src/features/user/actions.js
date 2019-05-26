@@ -12,6 +12,12 @@ export const register = data => dispatch => {
   });
 };
 
+export const changePassword = data => dispatch => {
+  authPut(PATHS.REGISTER, { ...data, office: null }).then(res => {
+    dispatch(push("/"));
+  });
+};
+
 export const authenticate = (data, username) => dispatch => {
   basicPost(data, PATHS.AUTH).then(res => {
     localStorage.setItem("jwt", res.data);
