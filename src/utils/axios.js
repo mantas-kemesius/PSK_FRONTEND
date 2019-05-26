@@ -4,6 +4,7 @@ import { getJWToken } from "./../features/user/selectors";
 const URL = "http://localhost:8080";
 export const PATHS = {
   AUTH: "/api/login",
+  REGISTER: "/api/user/add",
   TRIP: "/api/trip",
   TRIP_DETAILS: "/api/tripDetails",
   TRIP_DETAILS_CREATE: "/api/tripDetails/create",

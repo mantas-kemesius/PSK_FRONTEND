@@ -1,10 +1,16 @@
-import { authGet, basicPost, authPost, PATHS } from "./../../utils/axios";
+import { authGet, basicPost, authPut, PATHS } from "./../../utils/axios";
 import { SET_AUTH, SET_DETAILS, SIGNOUT } from "./constants";
 import { push } from "connected-react-router";
 import { fetchTrips } from "./../../features/trips/actions";
 import { fetchAvailabilities } from "./../../features/availabilities/actions";
 import { fetchOfficeApartaments } from "./../../features/officeApartaments/actions";
 import { fetchOffices } from "./../../features/offices/actions";
+
+export const register = data => dispatch => {
+  authPut(PATHS.REGISTER, { ...data, office: null }).then(res => {
+    dispatch(push("/"));
+  });
+};
 
 export const authenticate = (data, username) => dispatch => {
   basicPost(data, PATHS.AUTH).then(res => {

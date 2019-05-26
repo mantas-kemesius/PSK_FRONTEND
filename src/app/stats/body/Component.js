@@ -1,7 +1,12 @@
 import React from "react";
+import AvailabilityDiagram from "./../../../components/availabilityDiagram/Component";
 
 const Body = () => {
-  return <h1>Statistika</h1>;
+  return (
+    <>
+      <AvailabilityDiagram />
+    </>
+  );
 };
 
 export default Body;
