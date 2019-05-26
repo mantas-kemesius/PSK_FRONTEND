@@ -53,7 +53,6 @@ class DynamicColumnChart extends Component {
             <div className="w30p">
               <select
                 className="w100p h50 p10 fz18 b-s1-grey"
-                value={this.props.year}
                 onChange={this.handleFormatChange}
               >
                 <option key="1" value="jpg">
