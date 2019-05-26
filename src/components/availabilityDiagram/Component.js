@@ -87,7 +87,7 @@ class DynamicColumnChart extends Component {
                   }
                 }}
               >
-                Export
+                Atsisiūsti
               </button>
             </div>
           </div>

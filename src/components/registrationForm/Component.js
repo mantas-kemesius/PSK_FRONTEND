@@ -40,7 +40,6 @@ class RegisterForm extends React.Component {
     this.setState({ password: e.target.value });
   };
   render() {
-    console.log(this.state);
     return (
       <div className="w100p df aic jc-center">
         <div className="w30p mt10p">
