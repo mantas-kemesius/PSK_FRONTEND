@@ -19,6 +19,7 @@ const mapStateToProps = (state, { id }) => {
     id: trip.uuid,
     trips: trip,
     isButtonActive: trip.coordinator.uuid === state.user.uuid,
+    isConfirmed: trip.status === "CONFIRMED",
     ready: !!state.trips && !!state.trips.byId
   };
 };
