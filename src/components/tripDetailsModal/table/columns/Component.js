@@ -59,6 +59,7 @@ class Columns extends React.Component {
             className={
               this.props.approved ? notActiveClassName : activeClassName
             }
+            style={{ padding: 4 }}
             onClick={() =>
               this.props.handleClick({
                 departureDate: this.props.departureDate,
