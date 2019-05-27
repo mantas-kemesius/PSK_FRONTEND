@@ -43,7 +43,6 @@ class Rows extends React.Component {
             style={hoverArr[key] ? active.style : notActive.style}
             onMouseOver={() => this.toggleHover(true, key)}
             onMouseOut={() => this.toggleHover(false, key)}
-            onClick={() => this.props.handleClick(item)}
           >
             <Columns id={item} />
           </tr>

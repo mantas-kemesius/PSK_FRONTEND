@@ -1,6 +1,7 @@
 import React from "react";
 
 const activeClassName = "w100p fz16 bg-success cw fwb";
+const activeClassNameo = "w100p fz16 bg-default cw fwb";
 const notActiveClassName = "w100p fz16 fwb b-s1-grey";
 
 const Columns = ({
@@ -11,7 +12,8 @@ const Columns = ({
   id,
   isButtonActive,
   isConfirmed,
-  handleClick
+  handleClick,
+  view
 }) => {
   if (!ready) {
     return null;
@@ -22,6 +24,13 @@ const Columns = ({
         return <td key={`tb-column-${item}-${key}`}>{item}</td>;
       })}
       <td key="veiksmai">
+        <button
+          className={activeClassNameo}
+          style={{ padding: 4 }}
+          onClick={() => view(id)}
+        >
+          Peržiūrėti
+        </button>
         {!isConfirmed ? (
           <button
             className={isButtonActive ? activeClassName : notActiveClassName}

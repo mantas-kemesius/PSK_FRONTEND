@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import Rows from "./Component";
-import { showTripDetailsInModal } from "./../../../../features/tripsDetails/actions";
 
 const getFilteredIds = state => {
   const isAll = state.filters.activeTripFilter === "ALL";
@@ -17,9 +16,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  {
-    handleClick: showTripDetailsInModal
-  }
-)(Rows);
+export default connect(mapStateToProps)(Rows);
