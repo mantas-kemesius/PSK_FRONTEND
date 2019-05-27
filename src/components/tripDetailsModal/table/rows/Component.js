@@ -30,9 +30,6 @@ class Rows extends React.Component {
   };
 
   render() {
-    if (!this.props.ready) {
-      return null;
-    }
     const { hoverArr } = this.state;
     return (
       <>
@@ -41,9 +38,6 @@ class Rows extends React.Component {
             className={hoverArr[key] ? active.className : notActive.className}
             key={`tb-row-${item}`}
             style={hoverArr[key] ? active.style : notActive.style}
-            onMouseOver={() => this.toggleHover(true, key)}
-            onMouseOut={() => this.toggleHover(false, key)}
-            onClick={() => this.props.handleClick(item)}
           >
             <Columns id={item} />
           </tr>

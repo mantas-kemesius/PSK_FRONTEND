@@ -5,7 +5,7 @@ import {
   authDelete,
   PATHS
 } from "./../../utils/axios";
-import { SET_TRIPS } from "./constants";
+import { SET_TRIPS, TOGGLE_MODAL, SET_ACTIVE_TRIP_ID } from "./constants";
 import { push } from "connected-react-router";
 import { toggleTripsDetailsForm } from "../../features/trips/actions";
 import { getApartamentIdByOfficeId } from "../officeApartaments/selectors";
@@ -28,6 +28,26 @@ export const approveTrip = ({ tripDetailsId, startDate, endDate }) => (
   authPut(PATHS.TRIP_DETAILS_UPDATE, {
     ...getState().tripDetails.byId[tripDetailsId],
     approved: true
+  }).then(res => {
+    dispatch(triggerSearch());
+  });
+};
+
+export const approveTripFromDetails = ({
+  tripDetailsId,
+  ticketNeeded,
+  carNeeded,
+  startDate,
+  endDate
+}) => (dispatch, getState) => {
+  dispatch(
+    setEmployeesNotAvailableDates(startDate, endDate, [getState().user.uuid])
+  );
+  authPut(PATHS.TRIP_DETAILS_UPDATE, {
+    ...getState().tripDetails.byId[tripDetailsId],
+    approved: true,
+    carNeeded,
+    ticketNeeded
   }).then(res => {
     dispatch(triggerSearch());
   });
@@ -98,6 +118,15 @@ export const addTripDetails = data => (dispatch, getState) => {
   dispatch(toggleTripsDetailsForm(false));
 };
 
+export const showTripDetailsInModal = tripId => dispatch => {
+  dispatch(setActiveTripId(tripId));
+  dispatch(toggleModal(true));
+};
+
+export const closeModal = () => dispatch => {
+  dispatch(toggleModal(false));
+};
+
 const generateTripDetailsPostData = ({
   carNeeded,
   ticketNeeded,
@@ -142,5 +171,15 @@ const generateTripDetailsPostData = ({
 
 export const save = payload => ({
   type: SET_TRIPS,
+  payload
+});
+
+export const setActiveTripId = payload => ({
+  type: SET_ACTIVE_TRIP_ID,
+  payload
+});
+
+export const toggleModal = payload => ({
+  type: TOGGLE_MODAL,
   payload
 });
