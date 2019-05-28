@@ -1,6 +1,7 @@
 import React from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import GoingEmployee from "./goingEmployees/Container";
+import { authPost, authGet, authPut, PATHS } from "./../../../utils/axios";
 
 const getLabel = (organizators, id) => {
   let label = "";
@@ -20,7 +21,8 @@ class TripForm extends React.Component {
   state = {
     employeeIds: [""],
     hotelNeeded: false,
-    apartament: true
+    apartament: true,
+    userSaved: false
   };
 
   getEmployeeSelectInputs = () => {
@@ -56,20 +58,9 @@ class TripForm extends React.Component {
   };
 
   handleClick = () => {
-    const data = {
-      employeeIds: this.state.employeeIds,
-      apartament: this.props.isApartamentsBooked
-        ? true
-        : this.props.isPossibleToBookApartaments && this.state.apartament,
-      hotelNeeded: this.props.isApartamentsBooked
-        ? false
-        : this.props.isPossibleToBookApartaments
-        ? this.state.hotelNeeded
-        : true,
-      carNeeded: false,
-      ticketNeeded: false
-    };
-    this.props.add({ ...data });
+    this.state.users.forEach(item => {
+      authPut(PATHS.TRIP_DETAILS_UPDATE, item).then(res => this.props.add());
+    });
   };
 
   addAdditionalField = () => {
@@ -92,6 +83,34 @@ class TripForm extends React.Component {
     }
   };
 
+  saveUsers = () => {
+    const postData = this.state.employeeIds.map(item => {
+      return {
+        trip: {
+          uuid: this.props.tripId
+        },
+        appUser: {
+          uuid: item
+        },
+        ticketNeeded: false,
+        carNeeded: false,
+        hotelNeeded: false
+      };
+    });
+    authPost(PATHS.TRIP_DETAILS_CREATE, postData).then(res => {
+      authGet(PATHS.TRIP_DETAILS + "/" + this.props.tripId).then(res2 => {
+        console.log(res2);
+        authPut("/api/trip/setApts", res2.data).then(res3 => {
+          console.log(res3);
+          this.setState({
+            userSaved: true,
+            users: res3.data
+          });
+        });
+      });
+    });
+  };
+
   render() {
     return (
       <>
@@ -101,27 +120,57 @@ class TripForm extends React.Component {
               <h2>Pridėti kelionės papildoma informacija:</h2>
             </div>
             <GoingEmployee />
-            {this.getEmployeeSelectInputs()}
-            {!!getNotBusyEmployees(this.props.employees, this.state.employeeIds)
-              .length && (
-              <div className="w100p pt20">
+            {this.state.userSaved ? (
+              <ul>
+                {this.state.users.map((user, key) => (
+                  <li key={key}>
+                    {user.appUser.name} {user.appUser.lastName} -
+                    apgyvendinimas:{" "}
+                    {user.hotelNeeded
+                      ? "Viešbutyje"
+                      : "Apartamentuose, " +
+                        user.officeApartament.streetAddress}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <>
+                {this.getEmployeeSelectInputs()}
+                {getNotBusyEmployees(
+                  this.props.employees,
+                  this.state.employeeIds
+                ).length && (
+                  <>
+                    <div className="w100p pt20">
+                      <button
+                        className="w100p h50 p10 fz18 bg-default cw fwb"
+                        onClick={this.addAdditionalField}
+                      >
+                        Prideti darbuotoja
+                      </button>
+                    </div>
+                    <div className="w100p pt20">
+                      <button
+                        className="w100p h50 p10 fz18 bg-success cw fwb"
+                        onClick={this.saveUsers}
+                      >
+                        Išsaugoti sąraša
+                      </button>
+                    </div>
+                  </>
+                )}
+              </>
+            )}
+            {this.state.userSaved && (
+              <div className="pt20">
                 <button
-                  className="w100p h50 p10 fz18 bg-default cw fwb"
-                  onClick={this.addAdditionalField}
+                  className="w100p h50 p10 fz18 bg-success cw fwb"
+                  onClick={this.handleClick}
                 >
-                  Prideti darbuotoja
+                  {"Išsaugoti"}
                 </button>
               </div>
             )}
-            {this.props.isWithDetails
-              ? this.getSelectedTripDetails()
-              : this.getTripDetailsForms()}
-            <button
-              className="w100p h50 p10 fz18 bg-success cw fwb"
-              onClick={this.handleClick}
-            >
-              {this.props.isWithDetails ? "Grįžti į pagrindinį" : "Išsaugoti"}
-            </button>
           </div>
         </div>
       </>

@@ -80,7 +80,7 @@ export const setTripConfirmed = tripId => dispatch => {
   authDelete(`/api/tripDetails/removeUnapproved/${tripId}`);
 };
 
-const triggerSearch = () => ({
+export const triggerSearch = () => ({
   type: "TRIGGER_FETCH"
 });
 
