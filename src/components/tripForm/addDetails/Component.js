@@ -1,7 +1,6 @@
 import React from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import GoingEmployee from "./goingEmployees/Container";
-import { Link } from "react-router-dom";
 
 const getLabel = (organizators, id) => {
   let label = "";
@@ -21,9 +20,7 @@ class TripForm extends React.Component {
   state = {
     employeeIds: [""],
     hotelNeeded: false,
-    apartament: true,
-    carNeeded: true,
-    ticketNeeded: false
+    apartament: true
   };
 
   getEmployeeSelectInputs = () => {
@@ -69,8 +66,8 @@ class TripForm extends React.Component {
         : this.props.isPossibleToBookApartaments
         ? this.state.hotelNeeded
         : true,
-      carNeeded: this.state.carNeeded,
-      ticketNeeded: this.state.ticketNeeded
+      carNeeded: false,
+      ticketNeeded: false
     };
     this.props.add({ ...data });
   };
@@ -92,14 +89,6 @@ class TripForm extends React.Component {
       this.setState({ hotelNeeded: true, apartament: false });
     } else {
       this.setState({ apartament: true, hotelNeeded: false });
-    }
-  };
-
-  onTransportChange = key => {
-    if (key === "car") {
-      this.setState({ carNeeded: true, ticketNeeded: false });
-    } else {
-      this.setState({ ticketNeeded: true, carNeeded: false });
     }
   };
 
@@ -171,25 +160,6 @@ class TripForm extends React.Component {
             <h3>Apgyvendinimas: Viešbutis</h3>
           </div>
         )}
-        <div className="w100p pb20">
-          <h3>Keliaus su</h3>
-          <div>
-            <input
-              type="radio"
-              checked={this.state.carNeeded}
-              onChange={() => this.onTransportChange("car")}
-            />
-            <label> Automobiliu</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              checked={this.state.ticketNeeded}
-              onChange={() => this.onTransportChange("ticket")}
-            />
-            <label> Lektuvu</label>
-          </div>
-        </div>
       </>
     );
   };
@@ -203,12 +173,6 @@ class TripForm extends React.Component {
             {this.props.details.hotelNeeded
               ? "Viešbutyje"
               : "Devbridge apartamentuos"}
-          </h3>
-        </div>
-        <div className="w100p pt20 pb20">
-          <h3>
-            Keliaus su:{" "}
-            {this.props.details.carNeeded ? "Automobiliu" : "Lėktuvu"}
           </h3>
         </div>
       </div>

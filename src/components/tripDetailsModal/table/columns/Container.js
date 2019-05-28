@@ -1,15 +1,23 @@
 import { connect } from "react-redux";
 import Columns from "./Component";
 import { approveTripFromDetails } from "./../../../../features/tripsDetails/actions";
+import { isEmployeeAvailableByGivenDates } from "./../../../../features/users/selectors";
 
 const mapStateToProps = (state, { id }) => {
   const tripDetails = state.tripDetails.byId[id];
-  console.log(tripDetails);
+
   return {
     id: tripDetails.uuid,
     departureDate: tripDetails.trip.departureDate,
     returnDate: tripDetails.trip.returnDate,
     approved: tripDetails.approved,
+    possibleToClick: tripDetails.appUser.uuid === state.user.uuid,
+    isUserAvailable: isEmployeeAvailableByGivenDates(
+      state,
+      tripDetails.trip.departureDate,
+      tripDetails.trip.returnDate,
+      state.user.uuid
+    ),
     details: [
       tripDetails.appUser.name,
       tripDetails.appUser.lastName,

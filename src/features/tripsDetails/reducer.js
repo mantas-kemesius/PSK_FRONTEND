@@ -2,6 +2,7 @@ import { SET_TRIPS, TOGGLE_MODAL, SET_ACTIVE_TRIP_ID } from "./constants";
 
 const defaultState = {
   relatedTripIds: {},
+  relatedUserIds: {},
   ids: [],
   byId: {},
   activeTripId: "",
@@ -15,7 +16,8 @@ const reducer = (state = defaultState, action) => {
         ...state,
         byId: { ...action.payload.byId },
         ids: { ...action.payload.ids },
-        relatedTripIds: { ...action.payload.relatedTripIds }
+        relatedTripIds: { ...action.payload.relatedTripIds },
+        relatedUserIds: { ...action.payload.relatedUserIds }
       };
     case TOGGLE_MODAL:
       return {
