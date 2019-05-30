@@ -9,12 +9,10 @@ import Register from "./registration/Component";
 import ChangePassword from "./changePassword/Component";
 import NotFoundPage from "./404/Component";
 import { Route, Switch } from "react-router";
-import { isAuth } from "./../features/user/selectors";
 import { connect } from "react-redux";
 
 class App extends React.Component {
   render() {
-    console.log(this.props.isAuth);
     return (
       <Switch>
         <Route exact path="/" render={() => <Home />} />

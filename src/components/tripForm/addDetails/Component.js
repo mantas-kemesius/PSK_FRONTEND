@@ -99,9 +99,7 @@ class TripForm extends React.Component {
     });
     authPost(PATHS.TRIP_DETAILS_CREATE, postData).then(res => {
       authGet(PATHS.TRIP_DETAILS + "/" + this.props.tripId).then(res2 => {
-        console.log(res2);
         authPut("/api/trip/setApts", res2.data).then(res3 => {
-          console.log(res3);
           this.setState({
             userSaved: true,
             users: res3.data
