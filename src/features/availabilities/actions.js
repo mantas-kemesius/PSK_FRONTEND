@@ -22,8 +22,11 @@ export const setEmployeesNotAvailableDates = (
       reason: "TRIP"
     };
   });
-  authPut(PATHS.AVAILABILITY, postData);
+  authPut(PATHS.AVAILABILITY, postData).then(res => dispatch(triggerSearch()));
 };
+export const triggerSearch = () => ({
+  type: "TRIGGER_FETCH"
+});
 
 const normaliseAndSave = data => dispatch => {
   let ids = [];

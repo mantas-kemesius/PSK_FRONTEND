@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import TripForm from "./Component";
-import { connectTrips } from "./../../../features/trips/actions";
 import { triggerSearch } from "./../../../features/tripsDetails/actions";
 import { toggleTripsDetailsForm } from "../../../features/trips/actions";
 import {
