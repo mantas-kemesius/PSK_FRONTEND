@@ -24,12 +24,15 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="w100p df aic jc-center">
-        <div className="w30p mt5p bs-light" style={{ padding: 30 }}>
+        <div
+          className="w30p mt5p bs-light"
+          style={{ paddingLeft: 40, paddingRight: 40, paddingBottom: 30 }}
+        >
           <div className="w100p df aic jc-center">
             <div>
               <img
                 width="300"
-                src="https://umip31wsnen1aksr33sgboy1-wpengine.netdna-ssl.com/wp-content/uploads/2019/02/white_logo-800x201.png"
+                src="https://www.relativity.com/relativity/cache/file/F02AF374-C299-6484-4C2798A99706E333_W700_Hauto.png"
               />
             </div>
           </div>

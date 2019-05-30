@@ -21,6 +21,21 @@ a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.bg {
+  /* The image used */
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("https://dbcms.s3.amazonaws.com/devbridgecom/bcms/image/429e616a2e2546d9b5fd9fd55b868af3/020818_KaunasOpening-3.jpg");
+
+  /* Full height */
+  height: 92vh;
+  padding-top: 6px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 button,
 input[type="submit"],
 input[type="reset"] {

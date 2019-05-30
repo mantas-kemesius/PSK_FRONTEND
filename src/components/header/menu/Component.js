@@ -19,7 +19,11 @@ const Menu = ({ logout, isAuth }) => {
         />
       )}
       {!isAuth && (
-        <Item title="Prisijungimas" link="login" className="grey-hover" />
+        <Item
+          title="Prisijungimas"
+          link="login"
+          className="bl-s1-grey br-s1-grey grey-hover"
+        />
       )}
       {isAuth && (
         <Item
