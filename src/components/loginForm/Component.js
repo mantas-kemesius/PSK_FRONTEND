@@ -3,8 +3,8 @@ import { withRouter } from "react-router-dom";
 
 class LoginForm extends React.Component {
   state = {
-    username: "admin",
-    password: "admin"
+    username: "",
+    password: ""
   };
 
   handleClick = () => {
@@ -24,27 +24,48 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="w100p df aic jc-center">
-        <div className="w30p mt10p">
-          <input
-            placeholder="username"
-            type="text"
-            className="w95p h40 p10 fz18 b-s1-grey"
-            value={this.state.username}
-            onChange={this.onUsernameChange}
-          />
-          <input
-            placeholder="password"
-            type="password"
-            className="w95p h40 p10 fz18 b0 b-s1-grey"
-            value={this.state.password}
-            onChange={this.onPasswordChange}
-          />
-          <button
-            className="w100p h50 p10 fz18 bg-default cw fwb"
-            onClick={this.handleClick}
-          >
-            Login
-          </button>
+        <div className="w30p mt5p bs-light" style={{ padding: 30 }}>
+          <div className="w100p df aic jc-center">
+            <div>
+              <img
+                width="300"
+                src="https://umip31wsnen1aksr33sgboy1-wpengine.netdna-ssl.com/wp-content/uploads/2019/02/white_logo-800x201.png"
+              />
+            </div>
+          </div>
+          <div className="df aic jc-center pt20">
+            <div className="fz24 fwb" style={{ paddingBottom: 30 }}>
+              Prisijungimas
+            </div>
+          </div>
+          <div>
+            <div className="w100p fz18 fwb pb10">Slapyvardis:</div>
+            <input
+              placeholder="username"
+              type="text"
+              className="w95p h40 p10 fz18 b-s1-grey bs-light"
+              value={this.state.username}
+              onChange={this.onUsernameChange}
+            />
+          </div>
+          <div className="w100p pt20">
+            <div className="w100p pb10 fz18 fwb">Slaptažodis:</div>
+            <input
+              placeholder="password"
+              type="password"
+              className="w95p h40 p10 fz18 b0 b-s1-grey bs-light"
+              value={this.state.password}
+              onChange={this.onPasswordChange}
+            />
+          </div>
+          <div className="pt20">
+            <button
+              className="w100p h50 p10 fz18 bg-default cw fwb bs-light"
+              onClick={this.handleClick}
+            >
+              Login
+            </button>
+          </div>
         </div>
       </div>
     );

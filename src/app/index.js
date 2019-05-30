@@ -9,19 +9,28 @@ import Register from "./registration/Component";
 import ChangePassword from "./changePassword/Component";
 import NotFoundPage from "./404/Component";
 import { Route, Switch } from "react-router";
+import { isAuth } from "./../features/user/selectors";
 
 class App extends React.Component {
   render() {
     return (
       <Switch>
         <Route exact path="/" render={() => <Home />} />
-        <Route exact path="/office" render={() => <Office />} />
-        <Route exact path="/trip" render={() => <Trip />} />
-        <Route exact path="/profile" render={() => <Profile />} />
-        <Route exact path="/stats" render={() => <Stats />} />
+        {isAuth() && <Route exact path="/office" render={() => <Office />} />}
+        {isAuth() && <Route exact path="/trip" render={() => <Trip />} />}
+        {isAuth() && <Route exact path="/profile" render={() => <Profile />} />}
+        {isAuth() && <Route exact path="/stats" render={() => <Stats />} />}
         <Route exact path="/login" render={() => <Login />} />
-        <Route exact path="/register" render={() => <Register />} />
-        <Route exact path="/changePassword" render={() => <ChangePassword />} />
+        {isAuth() && (
+          <Route exact path="/register" render={() => <Register />} />
+        )}
+        {isAuth() && (
+          <Route
+            exact
+            path="/changePassword"
+            render={() => <ChangePassword />}
+          />
+        )}
         <Route render={() => <NotFoundPage />} />
       </Switch>
     );
