@@ -3,11 +3,11 @@ import Trips from "./../../../components/trips/Container";
 import Offices from "./../../../components/offices/Container";
 import AdditionalButtons from "./../../../components/topButtons/Component";
 import TripDetailsModal from "./../../../components/tripDetailsModal/Container";
-import { isAuth } from "./../../../features/user/selectors";
-const Body = () => {
+import { connect } from "react-redux";
+const Body = ({ isAuth }) => {
   return (
     <div>
-      {!isAuth() && (
+      {!isAuth && (
         <div className="bg">
           <div className="mt20 ml20 posa">
             <img
@@ -34,4 +34,10 @@ const Body = () => {
   );
 };
 
-export default Body;
+const mapStateToProps = state => {
+  return {
+    isAuth: state.user.isAuth
+  };
+};
+
+export default connect(mapStateToProps)(Body);

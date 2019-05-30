@@ -11,6 +11,7 @@ import { fetchTrips } from "./../../features/trips/actions";
 import { fetchAvailabilities } from "./../../features/availabilities/actions";
 import { fetchOfficeApartaments } from "./../../features/officeApartaments/actions";
 import { fetchOffices } from "./../../features/offices/actions";
+import { initialize } from "./../../store/initialize";
 
 export const register = data => dispatch => {
   authPut(PATHS.REGISTER, { ...data, office: null }).then(res => {
@@ -54,10 +55,7 @@ export const signoutAndRemoveUser = () => dispatch => {
 };
 
 const triggerFetch = () => dispatch => {
-  dispatch(fetchTrips());
-  dispatch(fetchAvailabilities());
-  dispatch(fetchOfficeApartaments());
-  dispatch(fetchOffices());
+  initialize({ dispatch });
 };
 
 export const setUserDetails = payload => ({

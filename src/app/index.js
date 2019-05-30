@@ -10,21 +10,31 @@ import ChangePassword from "./changePassword/Component";
 import NotFoundPage from "./404/Component";
 import { Route, Switch } from "react-router";
 import { isAuth } from "./../features/user/selectors";
+import { connect } from "react-redux";
 
 class App extends React.Component {
   render() {
+    console.log(this.props.isAuth);
     return (
       <Switch>
         <Route exact path="/" render={() => <Home />} />
-        {isAuth() && <Route exact path="/office" render={() => <Office />} />}
-        {isAuth() && <Route exact path="/trip" render={() => <Trip />} />}
-        {isAuth() && <Route exact path="/profile" render={() => <Profile />} />}
-        {isAuth() && <Route exact path="/stats" render={() => <Stats />} />}
+        {this.props.isAuth && (
+          <Route exact path="/office" render={() => <Office />} />
+        )}
+        {this.props.isAuth && (
+          <Route exact path="/trip" render={() => <Trip />} />
+        )}
+        {this.props.isAuth && (
+          <Route exact path="/profile" render={() => <Profile />} />
+        )}
+        {this.props.isAuth && (
+          <Route exact path="/stats" render={() => <Stats />} />
+        )}
         <Route exact path="/login" render={() => <Login />} />
-        {isAuth() && (
+        {this.props.isAuth && (
           <Route exact path="/register" render={() => <Register />} />
         )}
-        {isAuth() && (
+        {this.props.isAuth && (
           <Route
             exact
             path="/changePassword"
@@ -36,5 +46,10 @@ class App extends React.Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    isAuth: !!state.user.isAuth
+  };
+};
 
-export default App;
+export default connect(mapStateToProps)(App);
