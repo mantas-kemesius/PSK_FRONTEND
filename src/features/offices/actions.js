@@ -16,17 +16,33 @@ export const addNewOffice = data => dispatch => {
   });
 };
 
-export const addApartaments = (office, streetAddress) => (
+export const addApartaments = (officeId, streetAddress) => (
   dispatch,
   getState
 ) => {
   const postData = {
     office: {
-      uuid: office.uuid
+      uuid: officeId
     },
     streetAddress
   };
   authPut(PATHS.OFFICE_APARTAMENTS, [postData]);
+};
+
+export const addApartament = ({ officeId, streetAddress }) => (
+  dispatch,
+  getState
+) => {
+  const postData = {
+    office: {
+      uuid: officeId
+    },
+    streetAddress
+  };
+  authPut(PATHS.OFFICE_APARTAMENTS, [postData]).then(res =>
+    dispatch(triggerSearch())
+  );
+  dispatch(push("/"));
 };
 
 const triggerSearch = () => ({

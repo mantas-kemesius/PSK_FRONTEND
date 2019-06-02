@@ -7,6 +7,7 @@ import Stats from "./stats/Component";
 import Login from "./login/Component";
 import Register from "./registration/Component";
 import ChangePassword from "./changePassword/Component";
+import OfficeApartament from "./officeApartament/Component";
 import NotFoundPage from "./404/Component";
 import { Route, Switch } from "react-router";
 import { connect } from "react-redux";
@@ -38,6 +39,9 @@ class App extends React.Component {
             path="/changePassword"
             render={() => <ChangePassword />}
           />
+        )}
+        {this.props.isAuth && (
+          <Route exact path="/officeApt" render={() => <OfficeApartament />} />
         )}
         <Route render={() => <NotFoundPage />} />
       </Switch>

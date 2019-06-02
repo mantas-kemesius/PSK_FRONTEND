@@ -1,10 +1,6 @@
 import { connect } from "react-redux";
 import TripForm from "./Component";
-import {
-  addTrip,
-  connectTrips,
-  toggleApartamentCheckbox
-} from "./../../../features/trips/actions";
+import { addTrip, connectTrips } from "./../../../features/trips/actions";
 import {
   getOfficesForSelectInput,
   getDestinationsForSelectInput

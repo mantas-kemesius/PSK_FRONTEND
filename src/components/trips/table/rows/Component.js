@@ -1,7 +1,7 @@
 import React from "react";
 import Columns from "./../columns/Container";
 
-const active = { style: { backgroundColor: "#f1f1f1" }, className: "cp" };
+const active = { style: { backgroundColor: "#f1f1f1" }, className: "" };
 const notActive = { style: {}, className: "" };
 
 class Rows extends React.Component {

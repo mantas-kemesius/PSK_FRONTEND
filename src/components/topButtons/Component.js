@@ -18,6 +18,13 @@ const AdditionalButtons = () => {
           </Link>
         </div>
         <div className="mr20">
+          <Link to="/officeApt">
+            <button className="w100p h50 p10 fz16 fwb b-s1-grey">
+              Pridėti apartamentą
+            </button>
+          </Link>
+        </div>
+        <div className="mr20">
           <Link to="/register">
             <button className="w100p h50 p10 fz16 fwb b-s1-grey">
               Pridėti vartotoją
