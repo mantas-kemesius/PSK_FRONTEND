@@ -7,16 +7,18 @@ import {
 import { push } from "connected-react-router";
 
 export const addNewOffice = data => dispatch => {
-  const { apartamentStreetAddress, ...rest } = data;
+  const { apartamentStreetAddress, apartmentNumber, ...rest } = data;
   authPut(PATHS.OFFICE_ADD, rest).then(res => {
     dispatch(fetchOffices());
     dispatch(push("/"));
-    dispatch(addApartaments(res.data, apartamentStreetAddress));
+    dispatch(
+      addApartaments(res.data.uuid, apartamentStreetAddress, apartmentNumber)
+    );
     dispatch(triggerSearch());
   });
 };
 
-export const addApartaments = (officeId, streetAddress) => (
+export const addApartaments = (officeId, streetAddress, apartmentNumber) => (
   dispatch,
   getState
 ) => {
@@ -24,12 +26,13 @@ export const addApartaments = (officeId, streetAddress) => (
     office: {
       uuid: officeId
     },
-    streetAddress
+    streetAddress,
+    apartmentNumber: Number(apartmentNumber)
   };
   authPut(PATHS.OFFICE_APARTAMENTS, [postData]);
 };
 
-export const addApartament = ({ officeId, streetAddress }) => (
+export const addApartament = ({ officeId, streetAddress, apartmentNumber }) => (
   dispatch,
   getState
 ) => {
@@ -37,7 +40,8 @@ export const addApartament = ({ officeId, streetAddress }) => (
     office: {
       uuid: officeId
     },
-    streetAddress
+    streetAddress,
+    apartmentNumber: Number(apartmentNumber)
   };
   authPut(PATHS.OFFICE_APARTAMENTS, [postData]).then(res =>
     dispatch(triggerSearch())

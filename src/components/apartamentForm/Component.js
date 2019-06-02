@@ -3,7 +3,8 @@ import React from "react";
 class OfficeForm extends React.Component {
   state = {
     officeId: "",
-    streetAddress: ""
+    streetAddress: "",
+    apartmentNumber: 0
   };
 
   handleClick = () => {
@@ -17,6 +18,16 @@ class OfficeForm extends React.Component {
   onApartamentAddressChange = e => {
     this.setState({ streetAddress: e.target.value });
   };
+  onApartmentNumberChange = e => {
+    this.setState({ apartmentNumber: e.target.value });
+  };
+  componentDidUpdate() {
+    if (this.props.offices.length && this.state.officeId === "") {
+      this.setState({
+        officeId: this.props.offices[0].id
+      });
+    }
+  }
   render() {
     return (
       <div className="w100p df aic jc-center">
@@ -44,6 +55,14 @@ class OfficeForm extends React.Component {
             className="w95p h30 p10 fz18 b-s1-grey"
             value={this.state.streetAddress}
             onChange={this.onApartamentAddressChange}
+          />
+          <div className="w100p pb10 pt20 fwb">Apartamento numeris: </div>
+          <input
+            placeholder="Apartamento numeris"
+            type="text"
+            className="w95p h30 p10 fz18 b-s1-grey"
+            value={this.state.apartmentNumber}
+            onChange={this.onApartmentNumberChange}
           />
           <div className="w100p pt20">
             <button

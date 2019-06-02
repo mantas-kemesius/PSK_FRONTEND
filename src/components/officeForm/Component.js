@@ -5,14 +5,11 @@ class OfficeForm extends React.Component {
     country: "",
     city: "",
     streetAddress: "",
-    apartamentStreetAddress: ""
+    apartamentStreetAddress: "",
+    apartmentNumber: 0
   };
 
   handleClick = () => {
-    const formData = new FormData();
-    formData.append("country", this.state.country);
-    formData.append("city", this.state.city);
-    formData.append("streetAddress", this.state.streetAddress);
     this.props.add({ ...this.state });
   };
 
@@ -20,6 +17,9 @@ class OfficeForm extends React.Component {
     this.setState({ country: e.target.value });
   };
 
+  onApartmentNumberChange = e => {
+    this.setState({ apartmentNumber: e.target.value });
+  };
   onCityChange = e => {
     this.setState({ city: e.target.value });
   };
@@ -69,6 +69,14 @@ class OfficeForm extends React.Component {
             className="w95p h30 p10 fz18 b-s1-grey"
             value={this.state.apartamentStreetAddress}
             onChange={this.onApartamentAddressChange}
+          />
+          <div className="w100p pb10 pt20 fwb">Apartamento numeris: </div>
+          <input
+            placeholder="Apartamento numeris"
+            type="text"
+            className="w95p h30 p10 fz18 b-s1-grey"
+            value={this.state.apartmentNumber}
+            onChange={this.onApartmentNumberChange}
           />
           <div className="w100p pt20">
             <button
