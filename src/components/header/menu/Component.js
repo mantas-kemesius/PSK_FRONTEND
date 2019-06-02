@@ -1,22 +1,18 @@
 import React from "react";
 import Item from "./item/Component";
 
-const Menu = ({ logout, isAuth }) => {
+const Menu = ({ logout, isAuth, isVisible }) => {
   return (
     <div className="pr30 df">
-      {isAuth && (
+      {isAuth && isVisible && (
         <Item
           title="Pridėti biurą"
           link="office"
           className="bh-s1-grey grey-hover"
         />
       )}
-      {isAuth && (
-        <Item
-          title="Pridėti kelionę"
-          link="trip"
-          className="br-s1-grey grey-hover"
-        />
+      {isAuth && isVisible && (
+        <Item title="Pridėti kelionę" link="trip" className="grey-hover" />
       )}
       {!isAuth && (
         <Item
@@ -29,7 +25,11 @@ const Menu = ({ logout, isAuth }) => {
         <Item
           title="Profilis"
           link="/profile"
-          className="br-s1-grey grey-hover"
+          className={
+            "grey-hover " + isVisible
+              ? "bl-s1-grey br-s1-grey"
+              : "bl-s1-grey br-s1-grey"
+          }
         />
       )}
       {isAuth && (

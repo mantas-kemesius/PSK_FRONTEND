@@ -17,20 +17,20 @@ class App extends React.Component {
     return (
       <Switch>
         <Route exact path="/" render={() => <Home />} />
-        {this.props.isAuth && (
+        {this.props.isAuth && this.props.isVisible && (
           <Route exact path="/office" render={() => <Office />} />
         )}
-        {this.props.isAuth && (
+        {this.props.isAuth && this.props.isVisible && (
           <Route exact path="/trip" render={() => <Trip />} />
         )}
         {this.props.isAuth && (
           <Route exact path="/profile" render={() => <Profile />} />
         )}
-        {this.props.isAuth && (
+        {this.props.isAuth && this.props.isVisible && (
           <Route exact path="/stats" render={() => <Stats />} />
         )}
         <Route exact path="/login" render={() => <Login />} />
-        {this.props.isAuth && (
+        {this.props.isAuth && this.props.isVisible && (
           <Route exact path="/register" render={() => <Register />} />
         )}
         {this.props.isAuth && (
@@ -40,7 +40,7 @@ class App extends React.Component {
             render={() => <ChangePassword />}
           />
         )}
-        {this.props.isAuth && (
+        {this.props.isAuth && this.props.isVisible && (
           <Route exact path="/officeApt" render={() => <OfficeApartament />} />
         )}
         <Route render={() => <NotFoundPage />} />
@@ -50,7 +50,12 @@ class App extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    isAuth: !!state.user.isAuth
+    isAuth: !!state.user.isAuth,
+    isVisible:
+      !!state.user &&
+      !!state.user.userRoleEnumList &&
+      (state.user.userRoleEnumList.indexOf("ADMINISTRATOR") !== -1 ||
+        state.user.userRoleEnumList.indexOf("ORGANIZATOR") !== -1)
   };
 };
 

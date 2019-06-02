@@ -1,9 +1,7 @@
 import { connect } from "react-redux";
-import Menu from "./Component";
-import { signoutAndRemoveUser } from "./../../../features/user/actions";
+import TopButtons from "./Component";
 
 const mapStateToProps = state => ({
-  isAuth: !!state.user.isAuth,
   isVisible:
     !!state.user &&
     !!state.user.userRoleEnumList &&
@@ -11,9 +9,4 @@ const mapStateToProps = state => ({
       state.user.userRoleEnumList.indexOf("ORGANIZATOR") !== -1)
 });
 
-export default connect(
-  mapStateToProps,
-  {
-    logout: signoutAndRemoveUser
-  }
-)(Menu);
+export default connect(mapStateToProps)(TopButtons);

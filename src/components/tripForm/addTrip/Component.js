@@ -55,6 +55,13 @@ class TripForm extends React.Component {
   handleCoordinatorChange = e => {
     this.setState({ coordinatorId: e.target.value });
   };
+  componentDidMount() {
+    if (this.state.coordinatorId === "" && this.props.organizators.length) {
+      this.setState({
+        coordinatorId: this.props.organizators[0].id
+      });
+    }
+  }
   handleOfficeChange = e => {
     this.setState({ officeId: e.target.value });
     this.props.setTripStartId(e.target.value);
