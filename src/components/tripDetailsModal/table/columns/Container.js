@@ -21,7 +21,9 @@ const mapStateToProps = (state, { id }) => {
     details: [
       tripDetails.appUser.name,
       tripDetails.appUser.lastName,
-      tripDetails.isHotelNeed ? "Viešbutyje" : "Apartamentuose"
+      tripDetails.isHotelNeed ? "Viešbutyje" : "Apartamentuose",
+      tripDetails.carNeeded,
+      tripDetails.ticketNeeded
     ]
   };
 };

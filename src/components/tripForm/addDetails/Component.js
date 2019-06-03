@@ -171,23 +171,25 @@ class TripForm extends React.Component {
                   this.state.employeeIds
                 ).length && (
                   <>
-                    <div className="w100p pt20">
-                      <button
-                        className="w100p h50 p10 fz18 bg-default cw fwb"
-                        onClick={this.addAdditionalField}
-                      >
-                        Prideti darbuotoja
-                      </button>
-                    </div>
                     {!this.state.loader ? (
-                      <div className="w100p pt20">
-                        <button
-                          className="w100p h50 p10 fz18 bg-success cw fwb"
-                          onClick={this.saveUsers}
-                        >
-                          Išsaugoti sąraša
-                        </button>
-                      </div>
+                      <>
+                        <div className="w100p pt20">
+                          <button
+                            className="w100p h50 p10 fz18 bg-default cw fwb"
+                            onClick={this.addAdditionalField}
+                          >
+                            Prideti darbuotoja
+                          </button>
+                        </div>
+                        <div className="w100p pt20">
+                          <button
+                            className="w100p h50 p10 fz18 bg-success cw fwb"
+                            onClick={this.saveUsers}
+                          >
+                            Išsaugoti sąraša
+                          </button>
+                        </div>
+                      </>
                     ) : (
                       <div className="tac" style={{ marginTop: "10px" }}>
                         <h1>Loading...</h1>

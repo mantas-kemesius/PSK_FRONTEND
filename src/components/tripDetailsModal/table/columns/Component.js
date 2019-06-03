@@ -7,19 +7,28 @@ const notActiveClassName = "w100p fz16 fwb b-s1-grey";
 class Columns extends React.Component {
   state = {
     ticket: false,
-    car: true
+    car: false
+  };
+
+  componentDidUpdate = () => {
+    if (this.props.details[3] || this.props.details[4]) {
+      if (!this.state.ticket && !this.state.car && !!this.props.details) {
+        this.setState({
+          ticket: this.props.details[4],
+          car: this.props.details[3]
+        });
+      }
+    }
   };
 
   handleRadio = transport => {
     if (transport === "car") {
       this.setState({
-        car: true,
-        ticket: false
+        car: !this.state.car
       });
     } else {
       this.setState({
-        car: false,
-        ticket: true
+        ticket: !this.state.ticket
       });
     }
   };
@@ -36,7 +45,7 @@ class Columns extends React.Component {
             <div>
               <div>
                 <input
-                  type="radio"
+                  type="checkbox"
                   value="option2"
                   checked={this.state.car}
                   onChange={() => this.handleRadio("car")}
@@ -46,7 +55,7 @@ class Columns extends React.Component {
               </div>
               <div>
                 <input
-                  type="radio"
+                  type="checkbox"
                   value="option2"
                   checked={this.state.ticket}
                   onChange={() => this.handleRadio("ticket")}

@@ -51,6 +51,8 @@ export const getTripsByUserId = (state, userId) => {
     tripDetailsId: id,
     isApproved: byId[id].approved,
     transport: byId[id].carNeeded ? "Automobilis" : "Lėktuvas",
+    carNeeded: byId[id].carNeeded,
+    ticketNeeded: byId[id].carNeeded,
     live: byId[id].hotelNeeded ? "Viešbutyje" : "Apartamentuose",
     cantGo: !isEmployeeAvailableByGivenDates(
       state,

@@ -18,15 +18,26 @@ export const fetchTripsDetails = () => dispatch => {
   });
 };
 
-export const approveTrip = ({ tripDetailsId, startDate, endDate }) => (
-  dispatch,
-  getState
-) => {
+export const approveTrip = ({
+  tripDetailsId,
+  startDate,
+  endDate,
+  carNeeded,
+  ticketNeeded
+}) => (dispatch, getState) => {
   dispatch(
     setEmployeesNotAvailableDates(startDate, endDate, [getState().user.uuid])
   );
+  const data = {
+    ...getState().tripDetails.byId[tripDetailsId],
+    carNeeded,
+    ticketNeeded,
+    approved: true
+  };
   authPut(PATHS.TRIP_DETAILS_UPDATE, {
     ...getState().tripDetails.byId[tripDetailsId],
+    carNeeded,
+    ticketNeeded,
     approved: true
   }).then(res => {
     dispatch(triggerSearch());
