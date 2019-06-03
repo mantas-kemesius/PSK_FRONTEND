@@ -53,7 +53,14 @@ export const getTripsByUserId = (state, userId) => {
     transport: byId[id].carNeeded ? "Automobilis" : "Lėktuvas",
     carNeeded: byId[id].carNeeded,
     ticketNeeded: byId[id].carNeeded,
-    live: byId[id].hotelNeeded ? "Viešbutyje" : "Apartamentuose",
+    live: byId[id].hotelNeeded
+      ? "Viešbutyje"
+      : !!byId[id].officeApartment &&
+        Object.keys(byId[id].officeApartment).length !== 0
+      ? `Apartamentuose: ${byId[id].officeApartment.streetAddress}, numeris: ${
+          byId[id].officeApartment.apartmentNumber
+        }`
+      : "",
     cantGo: !isEmployeeAvailableByGivenDates(
       state,
       byId[id].trip.departureDate,
@@ -80,19 +87,28 @@ export const getTripsByUserIdWithoutFilters = (state, userId) => {
   const tripDetailsIds = Object.keys(relatedUserIds).filter(
     id => relatedUserIds[id] === userId
   );
-  return tripDetailsIds.map(id => ({
-    trip: byId[id].trip,
-    tripDetailsId: id,
-    isApproved: byId[id].approved,
-    transport: byId[id].carNeeded ? "Automobilis" : "Lėktuvas",
-    live: byId[id].hotelNeeded ? "Viešbutyje" : "Apartamentuose",
-    cantGo: !isEmployeeAvailableByGivenDates(
-      state,
-      byId[id].trip.departureDate,
-      byId[id].trip.returnDate,
-      userId
-    )
-  }));
+  return tripDetailsIds.map(id => {
+    return {
+      trip: byId[id].trip,
+      tripDetailsId: id,
+      isApproved: byId[id].approved,
+      transport: byId[id].carNeeded ? "Automobilis" : "Lėktuvas",
+      live: byId[id].hotelNeeded
+        ? "Viešbutyje"
+        : !!byId[id].officeApartment &&
+          Object.keys(byId[id].officeApartment).length !== 0
+        ? `Apartamentuose: ${byId[id].officeApartment.streetAddress}, ${
+            byId[id].officeApartment.apartmentNumber
+          }`
+        : "",
+      cantGo: !isEmployeeAvailableByGivenDates(
+        state,
+        byId[id].trip.departureDate,
+        byId[id].trip.returnDate,
+        userId
+      )
+    };
+  });
 };
 
 export const getAlreadyGoingEmployeesData = (state, tripId) => {

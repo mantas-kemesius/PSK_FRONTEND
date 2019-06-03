@@ -28,12 +28,6 @@ export const approveTrip = ({
   dispatch(
     setEmployeesNotAvailableDates(startDate, endDate, [getState().user.uuid])
   );
-  const data = {
-    ...getState().tripDetails.byId[tripDetailsId],
-    carNeeded,
-    ticketNeeded,
-    approved: true
-  };
   authPut(PATHS.TRIP_DETAILS_UPDATE, {
     ...getState().tripDetails.byId[tripDetailsId],
     carNeeded,

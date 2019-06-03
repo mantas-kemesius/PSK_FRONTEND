@@ -18,12 +18,12 @@ const mapStateToProps = (state, { id }) => {
       tripDetails.trip.returnDate,
       state.user.uuid
     ),
+    carNeeded: tripDetails.carNeeded,
+    ticketNeeded: tripDetails.ticketNeeded,
     details: [
       tripDetails.appUser.name,
       tripDetails.appUser.lastName,
-      tripDetails.isHotelNeed ? "Viešbutyje" : "Apartamentuose",
-      tripDetails.carNeeded,
-      tripDetails.ticketNeeded
+      tripDetails.isHotelNeed ? "Viešbutyje" : "Apartamentuose"
     ]
   };
 };

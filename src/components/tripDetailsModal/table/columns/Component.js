@@ -11,11 +11,11 @@ class Columns extends React.Component {
   };
 
   componentDidUpdate = () => {
-    if (this.props.details[3] || this.props.details[4]) {
+    if (this.props.carNeeded || this.props.ticketNeeded) {
       if (!this.state.ticket && !this.state.car && !!this.props.details) {
         this.setState({
-          ticket: this.props.details[4],
-          car: this.props.details[3]
+          ticket: this.props.ticketNeeded,
+          car: this.props.carNeeded
         });
       }
     }

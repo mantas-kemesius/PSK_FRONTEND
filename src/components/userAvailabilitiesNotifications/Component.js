@@ -41,7 +41,6 @@ class Notifications extends React.Component {
     }
   };
   render() {
-    console.log(this.state);
     return (
       <div
         className="w100p df pb20 mt20"
@@ -82,7 +81,7 @@ class Notifications extends React.Component {
                     {cutDate(item.trip.returnDate)}
                   </div>
                   <div className="w100p pb20">
-                    <strong>Transporto priemonė:</strong>
+                    <strong>Kontrolinis sąrašas:</strong>
                     <div>
                       <div>
                         <input
